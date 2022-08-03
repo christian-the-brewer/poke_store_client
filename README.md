@@ -21,6 +21,9 @@ E-Commerce Store
 
 ##Wireframes
 
+![ERD](resources/images/wireframes1.jpg)
+![ERD](resources/images/wireframes2.jpg)
+
 ##API
 
 https://pokeapi.co/?ref=public-apis
