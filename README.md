@@ -15,18 +15,15 @@ E-Commerce Store
     -Front-end SME: Mahider Mengiste
     -Back-end SME: Jaden Ruplal
 
-##ERD
-
-![ERD](resources/images/erd.png)
 
 ##Wireframes
 
-![ERD](resources/images/wireframes1.jpg)
-![ERD](resources/images/wireframes2.jpg)
+![ERD](resources/images/wireframe.jpg)
+
 
 ##API
 
-https://pokeapi.co/?ref=public-apis
+https://github.com/christian-the-brewer/poke_store_api
 
 
 ##User Stories
