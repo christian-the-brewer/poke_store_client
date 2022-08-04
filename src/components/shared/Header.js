@@ -17,6 +17,11 @@ const authenticatedOptions = (
 				Sign out
 			</Link>
 		</Nav.Item>
+		<Nav.Item className='m-2'>
+			<Link to='/additem' style={linkStyle}>
+				Create Item
+			</Link>
+		</Nav.Item>
         <Nav.Item className='m-2'>
 			<Link to='/order' style={linkStyle}>
 				My Order
@@ -27,6 +32,7 @@ const authenticatedOptions = (
 				My Cart
 			</Link>
 		</Nav.Item>
+		
 
 	</>
 )
