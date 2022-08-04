@@ -1,7 +1,7 @@
-import { 
+import {
     Form,
     Button,
-    Container 
+    Container
 } from 'react-bootstrap'
 
 
@@ -17,16 +17,16 @@ const ItemForm = (props) => {
                     placeholder="What is this item's name?"
                     name="name"
                     id="name"
-                    value={ item.name }
-                    onChange={ handleChange }
+                    value={item.name}
+                    onChange={handleChange}
                 />
                 <Form.Label htmlFor="image">Image</Form.Label>
                 <Form.Control
                     placeholder="Image URL"
                     name="image"
                     id="image"
-                    value={ item.image }
-                    onChange={ handleChange }
+                    value={item.image}
+                    onChange={handleChange}
                 />
                 <Form.Label htmlFor="cost">Cost</Form.Label>
                 <Form.Control
@@ -34,32 +34,32 @@ const ItemForm = (props) => {
                     type="number"
                     name="cost"
                     id="cost"
-                    value={ item.cost }
-                    onChange={ handleChange }
+                    value={item.cost}
+                    onChange={handleChange}
                 />
                 <Form.Label htmlFor="description">Description</Form.Label>
                 <Form.Control
                     placeholder="Give a brief description"
                     name="description"
                     id="description"
-                    value={ item.description }
-                    onChange={ handleChange }
+                    value={item.description}
+                    onChange={handleChange}
                 />
-                 <Form.Label htmlFor="type">Type</Form.Label>
+                <Form.Label htmlFor="type">Type</Form.Label>
                 <Form.Control
                     placeholder="What is this items type?"
                     name="type"
                     id="type"
-                    value={ item.type }
-                    onChange={ handleChange }
+                    value={item.type}
+                    onChange={handleChange}
                 />
-                 <Form.Label htmlFor="stock">Stock</Form.Label>
+                <Form.Label htmlFor="stock">Stock</Form.Label>
                 <Form.Control
                     placeholder="How many are available?"
                     name="stock"
                     id="stock"
-                    value={ item.stock }
-                    onChange={ handleChange }
+                    value={item.stock}
+                    onChange={handleChange}
                 />
                 <Button type="submit">Submit</Button>
             </Form>
