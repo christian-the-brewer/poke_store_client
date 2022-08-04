@@ -1,20 +1,22 @@
 import React, { useState } from 'react'
 import { Modal } from 'react-bootstrap'
-import PetForm from '../shared/PetForm'
-import { updatePetSuccess, updatePetFailure } from '../shared/AutoDismissAlert/messages'
+// import PokeForm from shared/PokeFrom after this branch is merged with main branch
+import PokeForm from '../shared/PokeForm'
+// import updateItemSuccess and updateItemFailure from '../shared/AutoDismissAlert/messages', that is going to be added later
+import { updateItemSuccess, updateItemFailure } from '../shared/AutoDismissAlert/messages'
 
-const EditPetModal = (props) => {
+const EditItemModal = (props) => {
     const { 
         user, show, handleClose, 
-        updatePet, msgAlert, triggerRefresh
+        updateItem, msgAlert, triggerRefresh
     } = props
 
-    const [pet, setPet] = useState(props.pet)
+    const [item, setItem] = useState(props.item)
 
-    console.log('pet in edit modal', pet)
+    console.log('item in edit modal', item)
 
     const handleChange = (e) => {
-        setPet(prevPet => {
+        setItem(prevItem => {
             let updatedValue = e.target.value
             const updatedName = e.target.name
 
@@ -32,12 +34,12 @@ const EditPetModal = (props) => {
                 updatedValue = false
             }
 
-            const updatedPet = {
+            const updatedItem = {
                 [updatedName]: updatedValue
             }
             return {
-                ...prevPet,
-                ...updatedPet
+                ...prevItem,
+                ...updatedItem
             }
         })
     }
@@ -46,27 +48,27 @@ const EditPetModal = (props) => {
         // e equals the event
         e.preventDefault()
 
-        updatePet(user, pet)
+        updateItem(user, item)
             // if we're successful in the modal, we want the modal to close
             .then(() => handleClose())
             // send a success message to the user
             .then(() => {
                 msgAlert({
                     heading: 'Oh Yeah!',
-                    message: updatePetSuccess,
+                    message: updateItemSuccess,
                     variant: 'success'
                 })
             })
             // if everything is successful, we need to trigger our refresh for the show page
-            // this is that setUpdated function in showPet component
-            // updated is in ShowPet's useEffect's dependency array
-            // changes to the updated boolean cause ShowPet's useEffect to run again.
+            // this is that setUpdated function in showItemupdateItem component
+            // updated is in ShowItemupdateItem's useEffect's dependency array
+            // changes to the updated boolean cause ShowItemupdateItem's useEffect to run again.
             .then(() => triggerRefresh())
             // if there is an error, tell the user about it
             .catch(() => 
                 msgAlert({
                     heading: 'Oh No!',
-                    message: updatePetFailure,
+                    message: updateItemFailure,
                     variant: 'danger'
                 })
             )
@@ -76,15 +78,15 @@ const EditPetModal = (props) => {
         <Modal show={show} onHide={handleClose}>
             <Modal.Header closeButton />
             <Modal.Body>
-                <PetForm 
-                    pet={pet}
+                <ItemForm 
+                    item={item}
                     handleChange={handleChange}
                     handleSubmit={handleSubmit}
-                    heading="Update Pet"
+                    heading="Update Item"
                 />
             </Modal.Body>
         </Modal>
     )
 }
 
-export default EditPetModal
+export default EditItemModal

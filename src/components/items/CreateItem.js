@@ -2,7 +2,9 @@ import { useState } from 'react'
 import { createItem } from '../../api/items'
 import { useNavigate } from 'react-router-dom'
 import { createItemSuccess, createItemFailure } from '../shared/AutoDismissAlert/messages'
-import ItemForm from '../shared/ItemForm'
+
+// import PokeForm from shared/PokeFrom after this branch is merged with main branch
+import PokeForm from '../shared/PokeForm'
 
 const createItem = (props) => {
     console.log('these are the props in createItem\n', props)
