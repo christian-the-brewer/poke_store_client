@@ -6,11 +6,11 @@ import Card from 'react-bootstrap/Card'
 import { Link } from 'react-router-dom'
 
 import LoadingScreen from '../shared/LoadingScreen'
-import { getAllPets } from '../../api/pets'
+import { getAllItems } from '../../api/items'
 import messages from '../shared/AutoDismissAlert/messages'
 
-// PetsIndex should make a request to the api
-// To get all pets
+// ItemsIndex should make a request to the api
+// To get all items
 // Then display them when it gets them
 
 // style for our card container
@@ -20,22 +20,22 @@ const cardContainerStyle = {
     justifyContent: 'center'
 }
 
-const PetsIndex = (props) => {
-    const [pets, setPets] = useState(null)
+const ItemsIndex = (props) => {
+    const [items, setItems] = useState(null)
     const [error, setError] = useState(false)
 
     const { msgAlert } = props
 
-    console.log('Props in PetsIndex', props)
+    console.log('Props in ItemsIndex', props)
 
     useEffect(() => {
         console.log(props)
-        getAllPets()
-            .then(res => setPets(res.data.pets))
+        getAllItems()
+            .then(res => setItems(res.data.items))
             .catch(err => {
                 msgAlert({
-                    heading: 'Error Getting Pets',
-                    message: messages.getPetsFailure,
+                    heading: 'Error Getting Items',
+                    message: messages.getItemsFailure,
                     variant: 'danger',
                 })
                 setError(true)
@@ -46,19 +46,19 @@ const PetsIndex = (props) => {
         return <p>Error!</p>
     }
 
-    // If pets haven't been loaded yet, show a loading message
-    if (!pets) {
+    // If items haven't been loaded yet, show a loading message
+    if (!items) {
         return <LoadingScreen />
-    } else if (pets.length === 0) {
-        return <p>No pets yet. Better add some.</p>
+    } else if (items.length === 0) {
+        return <p>No items yet. Better add some.</p>
     }
 
-    const petCards = pets.map(pet => (
-        <Card style={{ width: '30%', margin: 5}} key={ pet.id }>
-            <Card.Header>{ pet.fullTitle }</Card.Header>
+    const itemCards = items.map(item => (
+        <Card style={{ width: '30%', margin: 5}} key={ item.id }>
+            <Card.Header>{ item.fullTitle }</Card.Header>
             <Card.Body>
                 <Card.Text>
-                    <Link to={`/pets/${pet.id}`}>View { pet.name }</Link>
+                    <Link to={`/items/${item.id}`}>View { item.name }</Link>
                 </Card.Text>
             </Card.Body>
         </Card>
@@ -66,9 +66,9 @@ const PetsIndex = (props) => {
 
     return (
         <div style={ cardContainerStyle }>
-            { petCards }
+            { itemCards }
         </div>
     )
 }
 
-export default PetsIndex
+export default ItemsIndex
