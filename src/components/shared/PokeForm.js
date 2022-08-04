@@ -13,7 +13,7 @@ const PokeForm = (props) => {
             <Form>
                 <Form.Label htmlFor="name">Name</Form.Label>
                 <Form.Control
-                    placeholder="What is your item's name?"
+                    placeholder="What is this item's name?"
                     name="name"
                     id="name"
                     value={ item.name }
@@ -21,7 +21,7 @@ const PokeForm = (props) => {
                 />
                 <Form.Label htmlFor="image">Image</Form.Label>
                 <Form.Control
-                    placeholder="What does this item look like?"
+                    placeholder="Image URL"
                     name="image"
                     id="image"
                     value={ item.image }
@@ -29,7 +29,7 @@ const PokeForm = (props) => {
                 />
                 <Form.Label htmlFor="cost">Cost</Form.Label>
                 <Form.Control
-                    placeholder="Whats the cost?"
+                    placeholder="Enter the items value"
                     type="number"
                     name="cost"
                     id="cost"
@@ -38,10 +38,26 @@ const PokeForm = (props) => {
                 />
                 <Form.Label htmlFor="description">Description</Form.Label>
                 <Form.Control
-                    placeholder="Give a breif description"
+                    placeholder="Give a brief description"
                     name="description"
                     id="description"
                     value={ item.description }
+                    onChange={ handleChange }
+                />
+                 <Form.Label htmlFor="type">Type</Form.Label>
+                <Form.Control
+                    placeholder="What is this items type?"
+                    name="type"
+                    id="type"
+                    value={ item.type }
+                    onChange={ handleChange }
+                />
+                 <Form.Label htmlFor="stock">Stock</Form.Label>
+                <Form.Control
+                    placeholder="How many are available?"
+                    name="stock"
+                    id="stock"
+                    value={ item.stock }
                     onChange={ handleChange }
                 />
                 <Button type="submit">Submit</Button>
