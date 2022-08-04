@@ -26,7 +26,7 @@ export const createItem = (user, newItem) => {
         headers: {
             Authorization: `Token token=${user.token}`,
         },
-        data: { item: newitem }
+        data: { item: newItem }
     })
 }
 
