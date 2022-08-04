@@ -42,15 +42,15 @@ const unauthenticatedOptions = (
 	</>
 )
 
-const alwaysOptions = (
-	<>
-		<Nav.Item className='m-2'>
-			<Link to='/' style={linkStyle}>
-				Home
-			</Link>
-		</Nav.Item>
-	</>
-)
+// const alwaysOptions = (
+// 	<>
+// 		<Nav.Item className='m-2'>
+// 			<Link to='/' style={linkStyle}>
+// 				Home
+// 			</Link>
+// 		</Nav.Item>
+// 	</>
+// )
 
 const Header = ({ user }) => (
 	<Navbar bg='primary' variant='dark' expand='md'>
@@ -65,7 +65,7 @@ const Header = ({ user }) => (
 				{user && (
 					<span className='navbar-text mr-2'>Welcome, {user.name}</span>
 				)}
-				{alwaysOptions}
+				{/* {alwaysOptions} */}
 				{user ? authenticatedOptions : unauthenticatedOptions}
 			</Nav>
 		</Navbar.Collapse>
