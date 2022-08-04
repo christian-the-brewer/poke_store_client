@@ -19,7 +19,7 @@ const ItemIndex = (props) => {
 
     const { msgAlert } = props
 
-    // console.log('Props in ItemIndex', props)
+    //console.log('Props in ItemIndex', props)
 
     useEffect(() => {
         // console.log(props)
