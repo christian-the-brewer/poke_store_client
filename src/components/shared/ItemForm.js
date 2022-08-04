@@ -4,8 +4,9 @@ import {
     Container 
 } from 'react-bootstrap'
 
+
 const ItemForm = (props) => {
-    const { pet, handleChange, heading } = props
+    const { item, handleChange, heading } = props
 
     return (
         <Container className="justify-content-center">
