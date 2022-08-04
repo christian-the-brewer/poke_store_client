@@ -7,13 +7,15 @@ import { useParams, useNavigate } from 'react-router-dom'
 import { Container, Card, Button } from 'react-bootstrap'
 
 import LoadingScreen from '../shared/LoadingScreen'
-import { getOnePet, updatePet, removePet } from '../../api/pets'
+import { getOneItem, updateItem, removeItem } from '../../api/items'
 import messages from '../shared/AutoDismissAlert/messages'
-import EditPetModal from './EditPetModal'
-import NewToyModal from '../toys/NewToyModal'
-import ShowToy from '../toys/ShowToy'
+import EditItemModal from './EditItemModal'
+// import NewCartModal from the carts directory that is going to be added later
+import NewCartModal from '../carts/NewCartModal'
+// import ShowCart from the carts directory that is going to be added later
+import ShowCart from '../carts/ShowCart'
 
-// We need to get the pet's id from the parameters
+// We need to get the item's id from the parameters
 // Then we need to make a request to the api
 // Then we need to display the results in this component
 
@@ -24,8 +26,8 @@ const cardContainerLayout = {
     flexFlow: 'row wrap'
 }
 
-const ShowPet = (props) => {
-    const [pet, setPet] = useState(null)
+const ShowItem = (props) => {
+    const [item, setItem] = useState(null)
     const [editModalShow, setEditModalShow] = useState(false)
     const [toyModalShow, setToyModalShow] = useState(false)
     const [updated, setUpdated] = useState(false)
@@ -37,16 +39,16 @@ const ShowPet = (props) => {
 
     const { user, msgAlert } = props
     console.log('user in props', user)
-    console.log('the pet in showPet', pet)
+    console.log('the item in showItem', item)
     // destructuring to get the id value from our route parameters
 
     useEffect(() => {
-        getOnePet(id)
-            .then(res => setPet(res.data.pet))
+        getOneItem(id)
+            .then(res => setItem(res.data.item))
             .catch(err => {                   
                 msgAlert({
-                    heading: 'Error getting pet',
-                    message: messages.getPetsFailure,
+                    heading: 'Error getting item',
+                    message: messages.getItemsFailure,
                     variant: 'danger'
                 })
                 navigate('/')
@@ -54,15 +56,15 @@ const ShowPet = (props) => {
             })
     }, [updated])
 
-    // here we'll declare a function that runs which will remove the pet
+    // here we'll declare a function that runs which will remove the item
     // this function's promise chain should send a message, and then go somewhere
-    const removeThePet = () => {
-        removePet(user, pet.id)
+    const removeTheItem = () => {
+        removeItem(user, item.id)
             // on success send a success message
             .then(() => {
                 msgAlert({
                     heading: 'Success',
-                    message: messages.removePetSuccess,
+                    message: messages.removeItemSuccess,
                     variant: 'success'
                 })
             })
@@ -71,20 +73,20 @@ const ShowPet = (props) => {
             // on failure send a failure message
             .catch(err => {                   
                 msgAlert({
-                    heading: 'Error removing pet',
-                    message: messages.removePetFailure,
+                    heading: 'Error removing item',
+                    message: messages.removeItemFailure,
                     variant: 'danger'
                 })
             })
     }
     let toyCards
-    if (pet) {
-        if (pet.toys.length > 0) {
-            toyCards = pet.toys.map(toy => (
+    if (item) {
+        if (item.toys.length > 0) {
+            toyCards = item.toys.map(toy => (
                 <ShowToy 
                     key={toy._id}
                     toy={toy}
-                    pet={pet}
+                    item={item}
                     user={user}
                     msgAlert={msgAlert}
                     triggerRefresh={() => setUpdated(prev => !prev)}
@@ -93,7 +95,7 @@ const ShowPet = (props) => {
         }
     }
 
-    if (!pet) {
+    if (!item) {
         return <LoadingScreen />
     }
 
@@ -101,13 +103,13 @@ const ShowPet = (props) => {
         <>
             <Container className="fluid">
                 <Card>
-                    <Card.Header>{ pet.fullTitle }</Card.Header>
+                    <Card.Header>{ item.fullTitle }</Card.Header>
                     <Card.Body>
                         <Card.Text>
-                            <div><small>Age: { pet.age }</small></div>
-                            <div><small>Type: { pet.type }</small></div>
+                            <div><small>Age: { item.age }</small></div>
+                            <div><small>Type: { item.type }</small></div>
                             <div><small>
-                                Adoptable: { pet.adoptable ? 'yes' : 'no'}
+                                Adoptable: { item.adoptable ? 'yes' : 'no'}
                             </small></div>
                         </Card.Text>
                     </Card.Body>
@@ -115,23 +117,23 @@ const ShowPet = (props) => {
                         <Button onClick={() => setToyModalShow(true)}
                             className="m-2" variant="info"
                         >
-                            Give {pet.name} a toy!
+                            Give {item.name} a toy!
                         </Button>
                         {
-                            pet.owner && user && pet.owner._id === user._id 
+                            item.owner && user && item.owner._id === user._id 
                             ?
                             <>
                                 <Button onClick={() => setEditModalShow(true)} 
                                     className="m-2" 
                                     variant="warning"
                                 >
-                                    Edit Pet
+                                    Edit Item
                                 </Button>
-                                <Button onClick={() => removeThePet()}
+                                <Button onClick={() => removeTheItem()}
                                     className="m-2"
                                     variant="danger"
                                 >
-                                    Set {pet.name} Free
+                                    Set {item.name} Free
                                 </Button>
                             </>
                             :
@@ -143,17 +145,17 @@ const ShowPet = (props) => {
             <Container style={cardContainerLayout}>
                 {toyCards}
             </Container>
-            <EditPetModal 
+            <EditItemModal 
                 user={user}
-                pet={pet} 
+                item={item} 
                 show={editModalShow} 
-                updatePet={updatePet}
+                updateItem={updateItem}
                 msgAlert={msgAlert}
                 triggerRefresh={() => setUpdated(prev => !prev)}
                 handleClose={() => setEditModalShow(false)} 
             />
             <NewToyModal 
-                pet={pet}
+                item={item}
                 show={toyModalShow}
                 user={user}
                 msgAlert={msgAlert}
@@ -164,4 +166,4 @@ const ShowPet = (props) => {
     )
 }
 
-export default ShowPet
+export default ShowItem
