@@ -4,7 +4,7 @@ import {
     Container 
 } from 'react-bootstrap'
 
-const PokeForm = (props) => {
+const ItemForm = (props) => {
     const { pet, handleChange, heading } = props
 
     return (
@@ -66,4 +66,4 @@ const PokeForm = (props) => {
     )
 }
 
-export default PokeForm
+export default ItemForm
