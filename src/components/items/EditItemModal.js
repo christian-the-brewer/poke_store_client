@@ -4,8 +4,8 @@ import ItemForm from '../shared/ItemForm'
 import { updateItemSuccess, updateItemFailure } from '../shared/AutoDismissAlert/messages'
 
 const EditItemModal = (props) => {
-    const { 
-        user, show, handleClose, 
+    const {
+        user, show, handleClose,
         updateItem, msgAlert, triggerRefresh
     } = props
 
@@ -60,7 +60,7 @@ const EditItemModal = (props) => {
             // if everything is successful, we need to trigger our refresh for the show page
             .then(() => triggerRefresh())
             // if there is an error, tell the user about it
-            .catch(() => 
+            .catch(() =>
                 msgAlert({
                     heading: 'Oh No!',
                     message: updateItemFailure,
@@ -73,7 +73,7 @@ const EditItemModal = (props) => {
         <Modal show={show} onHide={handleClose}>
             <Modal.Header closeButton />
             <Modal.Body>
-                <ItemForm 
+                <ItemForm
                     item={item}
                     handleChange={handleChange}
                     handleSubmit={handleSubmit}
