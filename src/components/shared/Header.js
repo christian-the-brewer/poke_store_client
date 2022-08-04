@@ -3,7 +3,7 @@ import Nav from 'react-bootstrap/Nav'
 import Navbar from 'react-bootstrap/Navbar'
 import { Link } from 'react-router-dom'
 const linkStyle = {
-    color: 'white',
+	color: 'white',
 }
 const authenticatedOptions = (
 	<>
@@ -18,11 +18,11 @@ const authenticatedOptions = (
 			</Link>
 		</Nav.Item>
 		<Nav.Item className='m-2'>
-			<Link to='/additem' style={linkStyle}>
+			<Link to='/addItem' style={linkStyle}>
 				Create Item
 			</Link>
 		</Nav.Item>
-        <Nav.Item className='m-2'>
+		<Nav.Item className='m-2'>
 			<Link to='/order' style={linkStyle}>
 				My Order
 			</Link>
@@ -32,19 +32,19 @@ const authenticatedOptions = (
 				My Cart
 			</Link>
 		</Nav.Item>
-		
+
 
 	</>
 )
 
 const unauthenticatedOptions = (
 	<>
-        <Nav.Item className='m-2'>
-		    <Link to='sign-up' style={linkStyle}>Sign Up</Link>
-        </Nav.Item>
-        <Nav.Item className='m-2'>
-		    <Link to='sign-in' style={linkStyle}>Sign In</Link>
-        </Nav.Item>
+		<Nav.Item className='m-2'>
+			<Link to='sign-up' style={linkStyle}>Sign Up</Link>
+		</Nav.Item>
+		<Nav.Item className='m-2'>
+			<Link to='sign-in' style={linkStyle}>Sign In</Link>
+		</Nav.Item>
 	</>
 )
 
@@ -61,10 +61,10 @@ const unauthenticatedOptions = (
 const Header = ({ user }) => (
 	<Navbar bg='primary' variant='dark' expand='md'>
 		<Navbar.Brand className='m-2'>
-            <Link to='/' style={linkStyle}>
-                Poke
-            </Link>
-        </Navbar.Brand>
+			<Link to='/' style={linkStyle}>
+				Poke
+			</Link>
+		</Navbar.Brand>
 		<Navbar.Toggle aria-controls='basic-navbar-nav' />
 		<Navbar.Collapse id='basic-navbar-nav'>
 			<Nav className='ml-auto'>
