@@ -9,50 +9,44 @@ import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 
 const SignUp = (props) => {
-	// constructor(props) {
-	// 	super(props)
 
-	// 	this.state = {
-	// 		email: '',
-	// 		password: '',
-	// 		passwordConfirmation: '',
-	// 	}
-	// }    
     const [email, setEmail] = useState('')
+    const [name, setName] = useState('')
     const [password, setPassword] = useState('')
     const [passwordConfirmation, setPasswordConfirmation] = useState('')
 
     const navigate = useNavigate()
 
-	const onSignUp = (event) => {
-		event.preventDefault()
+    const onSignUp = (event) => {
+        event.preventDefault()
 
-		const { msgAlert, setUser } = props
+        const { msgAlert, setUser } = props
 
-        const credentials = {email, password, passwordConfirmation}
+        const credentials = { email, name, password, passwordConfirmation }
 
-		signUp(credentials)
-			.then(() => signIn(credentials))
-			.then((res) => setUser(res.data.user))
-			.then(() =>
-				msgAlert({
-					heading: 'Sign Up Success',
-					message: messages.signUpSuccess,
-					variant: 'success',
-				})
-			)
-			.then(() => navigate('/'))
-			.catch((error) => {
+        signUp(credentials)
+            .then(() => signIn(credentials))
+            .then((res) => setUser(res.data.user))
+            .then(() =>
+                msgAlert({
+                    heading: 'Sign Up Success',
+                    message: messages.signUpSuccess,
+                    variant: 'success',
+                })
+            )
+            .then(() => navigate('/'))
+            .catch((error) => {
                 setEmail('')
+                setName('')
                 setPassword('')
                 setPasswordConfirmation('')
-				msgAlert({
-					heading: 'Sign Up Failed with error: ' + error.message,
-					message: messages.signUpFailure,
-					variant: 'danger',
-				})
-			})
-	}
+                msgAlert({
+                    heading: 'Sign Up Failed with error: ' + error.message,
+                    message: messages.signUpFailure,
+                    variant: 'danger',
+                })
+            })
+    }
 
 
     return (
@@ -69,6 +63,17 @@ const SignUp = (props) => {
                             value={email}
                             placeholder='Enter email'
                             onChange={e => setEmail(e.target.value)}
+                        />
+                    </Form.Group>
+                    <Form.Group controlId='name'>
+                        <Form.Label>Username</Form.Label>
+                        <Form.Control
+                            required
+                            type='name'
+                            name='name'
+                            value={name}
+                            placeholder='Enter username'
+                            onChange={e => setName(e.target.value)}
                         />
                     </Form.Group>
                     <Form.Group controlId='password'>
