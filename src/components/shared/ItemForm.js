@@ -6,12 +6,12 @@ import {
 
 
 const ItemForm = (props) => {
-    const { item, handleChange, heading } = props
+    const { item, handleChange, handleSubmit, heading } = props
 
     return (
         <Container className="justify-content-center">
             <h3>{heading}</h3>
-            <Form>
+            <Form onSubmit={handleSubmit}>
                 <Form.Label htmlFor="name">Name</Form.Label>
                 <Form.Control
                     placeholder="What is this item's name?"
@@ -45,12 +45,12 @@ const ItemForm = (props) => {
                     value={item.description}
                     onChange={handleChange}
                 />
-                <Form.Label htmlFor="type">Type</Form.Label>
+                <Form.Label htmlFor="pokemonType">Type</Form.Label>
                 <Form.Control
                     placeholder="What is this items type?"
-                    name="type"
-                    id="type"
-                    value={item.type}
+                    name="pokemonType"
+                    id="pokemonType"
+                    value={item.pokemonType}
                     onChange={handleChange}
                 />
                 <Form.Label htmlFor="stock">Stock</Form.Label>

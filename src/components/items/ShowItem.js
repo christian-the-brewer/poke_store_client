@@ -33,7 +33,7 @@ const ShowItem = (props) => {
     useEffect(() => {
         getOneItem(id)
             .then(res => setItem(res.data.item))
-            .catch(err => {                   
+            .catch(err => {
                 msgAlert({
                     heading: 'Error getting item',
                     message: messages.getItemsFailure,
@@ -47,7 +47,7 @@ const ShowItem = (props) => {
     // here we'll declare a function that runs which will remove the item
     // this function's promise chain should send a message, and then go somewhere
     const removeTheItem = () => {
-        removeItem(user, item.id)
+        removeItem(user, item._id)
             // on success send a success message
             .then(() => {
                 msgAlert({
@@ -57,9 +57,9 @@ const ShowItem = (props) => {
                 })
             })
             // then navigate to index
-            .then(() => {navigate('/')})
+            .then(() => { navigate('/') })
             // on failure send a failure message
-            .catch(err => {                   
+            .catch(err => {
                 msgAlert({
                     heading: 'Error removing item',
                     message: messages.removeItemFailure,
@@ -76,22 +76,22 @@ const ShowItem = (props) => {
         <>
             <Container className="fluid">
                 <Card>
-                    <Card.Header>{ item.name }</Card.Header>
+                    <Card.Header>{item.name}</Card.Header>
                     <Card.Body>
                         <img src={item.image} />
                         <Card.Text>
-                            <p>Type: { item.type } </p>
-                            <p> Description: { item.description } </p>
-                            <p> Cost: { item.cost } </p>
-                            <p> Stock: { item.stock } </p>
+                            <p>Type: {item.pokemonType} </p>
+                            <p> Description: {item.description} </p>
+                            <p> Cost: {item.cost} </p>
+                            <p> Stock: {item.stock} </p>
                         </Card.Text>
                     </Card.Body>
                     <Card.Footer>
                         {
-                            
+
                             <>
-                                <Button onClick={() => setEditModalShow(true)} 
-                                    className="m-2" 
+                                <Button onClick={() => setEditModalShow(true)}
+                                    className="m-2"
                                     variant="warning"
                                 >
                                     Edit Item
@@ -103,20 +103,20 @@ const ShowItem = (props) => {
                                     Delete This Item
                                 </Button>
                             </>
-                            
-                            
+
+
                         }
                     </Card.Footer>
                 </Card>
             </Container>
-            <EditItemModal 
+            <EditItemModal
                 user={user}
-                item={item} 
-                show={editModalShow} 
+                item={item}
+                show={editModalShow}
                 updateItem={updateItem}
                 msgAlert={msgAlert}
                 triggerRefresh={() => setUpdated(prev => !prev)}
-                handleClose={() => setEditModalShow(false)} 
+                handleClose={() => setEditModalShow(false)}
             />
         </>
     )

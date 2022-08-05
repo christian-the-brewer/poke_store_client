@@ -19,10 +19,10 @@ const ItemIndex = (props) => {
 
     const { msgAlert } = props
 
-    // console.log('Props in ItemIndex', props)
+    //console.log('Props in ItemIndex', props)
 
     useEffect(() => {
-        // console.log(props)
+
         getAllItems()
             .then(res => setItems(res.data.items))
             .catch(err => {
@@ -31,6 +31,8 @@ const ItemIndex = (props) => {
                     message: messages.getItemsFailure,
                     variant: 'danger',
                 })
+                // console.log("here is get all items", getAllItems())
+                console.log(err)
                 setError(true)
             })
     }, [])
@@ -46,11 +48,11 @@ const ItemIndex = (props) => {
         return <p>Sorry, the Poke Mart is sold out of everything.</p>
     }
 
-    const itemCards = items.map(item => (
-        <Card style={{ width: '30%', margin: 5 }} key={item.id}>
+    const itemCards = items.map((item, index) => (
+        <Card style={{ width: '30%', margin: 5 }} key={index}>
             <Card.Header>{item.name}</Card.Header>
             <Card.Body>
-                <Link to={`/items/${item.id}`}><img src={item.image} alt={item.name}></img></Link>
+                <Link to={`/items/${item._id}`}><img src={item.image} alt={item.name}></img></Link>
             </Card.Body>
         </Card>
     ))
