@@ -142,6 +142,10 @@ const pokeColor = function (item) {
         return 'yellow'
     } else if (item.pokemonType.toLowerCase() === 'ground') {
         return 'peru'
+    } else if (item.pokemonType.toLowerCase() === 'fairy') {
+        return 'deepPink'
+    } else if (item.pokemonType.toLowerCase() === 'fighting') {
+        return 'orangeRed'
     }
 }
 
@@ -160,7 +164,7 @@ const wordColor = function (item) {
         return 'silver'
     } else if (item.pokemonType.toLowerCase() === 'poison') {
         return 'orchid'
-    } else if (item.pokemonType.toLowerCase() === 'eletric') {
+    } else if (item.pokemonType.toLowerCase() === 'electric') {
         return 'yellow'
     } else if (item.pokemonType.toLowerCase() === 'ground') {
         return 'peru'

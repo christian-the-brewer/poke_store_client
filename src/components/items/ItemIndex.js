@@ -54,11 +54,11 @@ const ItemIndex = (props) => {
 
     const itemCards = items.map((item, index) => (
         <Card style={{ width: '30%', margin: 5 }} key={index}>
-            <Card.Header>{item.name}</Card.Header>
+            <Card.Header style={{backgroundColor: pokeColor(item)}} >{item.name}</Card.Header>
             <Card.Body>
                 <Link to={`/items/${item._id}`}><img src={item.image} alt={item.name}></img></Link>
             </Card.Body>
-            <Card.Footer>
+            <Card.Footer style={{backgroundColor: pokeColor(item), color: wordColor(item) }}>
                 <div>
                     <p>
                         Price: ${item.cost}
@@ -84,6 +84,54 @@ const ItemIndex = (props) => {
             {itemCards}
         </div>
     )
+}
+
+const pokeColor = function (item) {
+    if (item.pokemonType.toLowerCase() === 'fire') {
+        return 'crimson'
+    } else if (item.pokemonType.toLowerCase() === 'grass') {
+       return 'lawnGreen'
+    } else if (item.pokemonType.toLowerCase() === 'water') {
+        return 'royalBlue'
+    } else if (item.pokemonType.toLowerCase() === 'bug') {
+        return 'sandyBrown'
+    } else if (item.pokemonType.toLowerCase() === 'flying') {
+        return 'skyBlue'
+    } else if (item.pokemonType.toLowerCase() === 'normal') {
+        return 'silver'
+    } else if (item.pokemonType.toLowerCase() === 'poison') {
+        return 'orchid'
+    } else if (item.pokemonType.toLowerCase() === 'electric') {
+        return 'yellow'
+    } else if (item.pokemonType.toLowerCase() === 'ground') {
+        return 'peru'
+    } else if (item.pokemonType.toLowerCase() === 'fairy') {
+        return 'deepPink'
+    } else if (item.pokemonType.toLowerCase() === 'fighting') {
+        return 'orangeRed'
+    }
+}
+
+const wordColor = function (item) {
+    if (item.pokemonType.toLowerCase() === 'fire') {
+        return 'blue'
+    } else if (item.pokemonType.toLowerCase() === 'grass') {
+       return 'black'
+    } else if (item.pokemonType.toLowerCase() === 'water') {
+        return 'black'
+    } else if (item.pokemonType.toLowerCase() === 'bug') {
+        return 'black'
+    } else if (item.pokemonType.toLowerCase() === 'flying') {
+        return 'black'
+    } else if (item.pokemonType.toLowerCase() === 'normal') {
+        return 'black'
+    } else if (item.pokemonType.toLowerCase() === 'poison') {
+        return 'black'
+    } else if (item.pokemonType.toLowerCase() === 'electric') {
+        return 'black'
+    } else if (item.pokemonType.toLowerCase() === 'ground') {
+        return 'black'
+    }
 }
 
 export default ItemIndex
