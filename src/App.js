@@ -89,7 +89,7 @@ const App = () => {
 						</RequireAuth>
 					}
 				/>
-				//CART ROUTES
+
 				<Route
 					path="/carts/:id"
 					element={
@@ -98,8 +98,8 @@ const App = () => {
 						</RequireAuth>
 					}
 				/>
-				//ORDER ROUTES
-				<Route
+
+				{/* <Route
 					path="/orders"
 					element={
 						<RequireAuth user={user}>
@@ -114,7 +114,7 @@ const App = () => {
 							<ShowOrder msgAlert={msgAlert} user={user} />
 						</RequireAuth>
 					}
-				/>
+				/> */}
 
 
 			</Routes>
