@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import Card from 'react-bootstrap/Card'
+import { Container, Card, Button } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 
 import LoadingScreen from '../shared/LoadingScreen'
@@ -37,6 +37,10 @@ const ItemIndex = (props) => {
             })
     }, [])
 
+    const addToCart = () => {
+
+    }
+
     if (error) {
         return <p>Error!</p>
     }
@@ -54,7 +58,25 @@ const ItemIndex = (props) => {
             <Card.Body>
                 <Link to={`/items/${item._id}`}><img src={item.image} alt={item.name}></img></Link>
             </Card.Body>
-        </Card>
+            <Card.Footer>
+                <div>
+                    <p>
+                        Price: ${item.cost}
+                    </p>
+                    <p>
+                        Qty: {item.stock}
+                    </p>
+                </div>
+                <div>
+                    <Button onClick={() => addToCart()}
+                        className="m-2"
+                        variant="success"
+                    >
+                        Add to Cart
+                    </Button>
+                </div>
+            </Card.Footer>
+        </Card >
     ))
 
     return (
