@@ -12,6 +12,7 @@ const EditItemModal = (props) => {
     const [item, setItem] = useState(props.item)
 
     console.log('item in edit modal', item)
+    console.log('user in edit modal', user)
 
     const handleChange = (e) => {
         setItem(prevItem => {
@@ -45,7 +46,8 @@ const EditItemModal = (props) => {
     const handleSubmit = (e) => {
         // e equals the event
         e.preventDefault()
-
+        console.log("this is user in update", user)
+        console.log("this is item in update", item)
         updateItem(user, item)
             // if we're successful in the modal, we want the modal to close
             .then(() => handleClose())
@@ -78,6 +80,7 @@ const EditItemModal = (props) => {
                     handleChange={handleChange}
                     handleSubmit={handleSubmit}
                     heading="Update Item"
+
                 />
             </Modal.Body>
         </Modal>

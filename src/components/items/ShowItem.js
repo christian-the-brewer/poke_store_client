@@ -47,7 +47,7 @@ const ShowItem = (props) => {
     // here we'll declare a function that runs which will remove the item
     // this function's promise chain should send a message, and then go somewhere
     const removeTheItem = () => {
-        removeItem(user, item.id)
+        removeItem(user, item._id)
             // on success send a success message
             .then(() => {
                 msgAlert({

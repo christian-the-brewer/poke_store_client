@@ -3,7 +3,10 @@ import axios from 'axios'
 
 //READ => INDEX
 export const getAllItems = () => {
-    return axios(`${apiUrl}/items`)
+    return axios({
+        url: `${apiUrl}/items`,
+        method: 'GET'
+    })
 }
 
 // READ => SHOW
@@ -39,8 +42,9 @@ export const updateItem = (user, updatedItem) => {
     // we're going to refer to this as newPet
     // console.log('this is user', user)
     console.log('this is updatedItem', updatedItem)
+
     return axios({
-        url: `${apiUrl}/items/${updatedItem.id}`,
+        url: `${apiUrl}/items/${updatedItem._id}`,
         method: 'PATCH',
         headers: {
             Authorization: `Token token=${user.token}`,

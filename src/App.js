@@ -14,6 +14,7 @@ import SignOut from './components/auth/SignOut'
 import ChangePassword from './components/auth/ChangePassword'
 import ShowItem from './components/items/ShowItem'
 import CreateItem from './components/items/CreateItem'
+import ItemIndex from './components/items/ItemIndex'
 
 const App = () => {
 
@@ -69,6 +70,10 @@ const App = () => {
 						<RequireAuth user={user}>
 							<ChangePassword msgAlert={msgAlert} user={user} />
 						</RequireAuth>}
+				/>
+				<Route
+					path="/items"
+					element={<ItemIndex user={user} msgAlert={msgAlert} />}
 				/>
 				<Route
 					path="/items/:id"
