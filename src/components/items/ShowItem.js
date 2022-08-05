@@ -81,7 +81,7 @@ const ShowItem = (props) => {
                     <Card.Body >
                         <img src={item.image} />
                         <Card.Text>
-                            <p>Type: {item.pokemonType} </p>
+                            <p>Type: {item.pokemonType.toLowerCase()} </p>
                             <p> Description: {item.description} </p>
                             <p> Cost: {item.cost} </p>
                             <p> Stock: {item.stock} </p>
@@ -124,45 +124,45 @@ const ShowItem = (props) => {
 }
 
 const pokeColor = function (item) {
-    if (item.pokemonType === 'fire') {
+    if (item.pokemonType.toLowerCase() === 'fire') {
         return 'crimson'
-    } else if (item.pokemonType === 'grass') {
+    } else if (item.pokemonType.toLowerCase() === 'grass') {
        return 'lawnGreen'
-    } else if (item.pokemonType === 'water') {
+    } else if (item.pokemonType.toLowerCase() === 'water') {
         return 'royalBlue'
-    } else if (item.pokemonType === 'bug') {
+    } else if (item.pokemonType.toLowerCase() === 'bug') {
         return 'sandyBrown'
-    } else if (item.pokemonType === 'flying') {
+    } else if (item.pokemonType.toLowerCase() === 'flying') {
         return 'skyBlue'
-    } else if (item.pokemonType === 'normal') {
+    } else if (item.pokemonType.toLowerCase() === 'normal') {
         return 'silver'
-    } else if (item.pokemonType === 'poison') {
+    } else if (item.pokemonType.toLowerCase() === 'poison') {
         return 'orchid'
-    } else if (item.pokemonType === 'eletric') {
+    } else if (item.pokemonType.toLowerCase() === 'eletric') {
         return 'yellow'
-    } else if (item.pokemonType === 'ground') {
+    } else if (item.pokemonType.toLowerCase() === 'ground') {
         return 'peru'
     }
 }
 
 const wordColor = function (item) {
-    if (item.pokemonType === 'fire') {
+    if (item.pokemonType.toLowerCase() === 'fire') {
         return 'crimson'
-    } else if (item.pokemonType === 'grass') {
+    } else if (item.pokemonType.toLowerCase() === 'grass') {
        return 'lawnGreen'
-    } else if (item.pokemonType === 'water') {
+    } else if (item.pokemonType.toLowerCase() === 'water') {
         return 'royalBlue'
-    } else if (item.pokemonType === 'bug') {
+    } else if (item.pokemonType.toLowerCase() === 'bug') {
         return 'sandyBrown'
-    } else if (item.pokemonType === 'flying') {
+    } else if (item.pokemonType.toLowerCase() === 'flying') {
         return 'skyBlue'
-    } else if (item.pokemonType === 'normal') {
+    } else if (item.pokemonType.toLowerCase() === 'normal') {
         return 'silver'
-    } else if (item.pokemonType === 'poison') {
+    } else if (item.pokemonType.toLowerCase() === 'poison') {
         return 'orchid'
-    } else if (item.pokemonType === 'eletric') {
+    } else if (item.pokemonType.toLowerCase() === 'eletric') {
         return 'yellow'
-    } else if (item.pokemonType === 'ground') {
+    } else if (item.pokemonType.toLowerCase() === 'ground') {
         return 'peru'
     }
 }
