@@ -10,7 +10,7 @@ import messages from '../shared/AutoDismissAlert/messages'
 import EditCartModal from './EditCartModal'
 
 
-const ShowItem = (props) => {
+const ShowCart = (props) => {
     const [cart, setCart] = useState(null)
     const [editModalShow, setEditModalShow] = useState(false)
     const [updated, setUpdated] = useState(false)
@@ -43,8 +43,8 @@ const ShowItem = (props) => {
     }
 
 
-    const cartProducts = cart.map((product, index) => (
-        <li key={index}>{product.name}: {product.cost}</li>
+    const cartProducts = cart.products.map((product, index) => (
+        <li key={index}>{product.name}: {product.prices}</li>
     ))
 
     return (

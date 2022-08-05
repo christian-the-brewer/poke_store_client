@@ -15,6 +15,8 @@ import ChangePassword from './components/auth/ChangePassword'
 import ShowItem from './components/items/ShowItem'
 import CreateItem from './components/items/CreateItem'
 import ItemIndex from './components/items/ItemIndex'
+import ShowCart from './components/cart/ShowCart'
+
 
 const App = () => {
 
@@ -87,6 +89,34 @@ const App = () => {
 						</RequireAuth>
 					}
 				/>
+				//CART ROUTES
+				<Route
+					path="/carts/:id"
+					element={
+						<RequireAuth user={user}>
+							<ShowCart msgAlert={msgAlert} user={user} />
+						</RequireAuth>
+					}
+				/>
+				//ORDER ROUTES
+				<Route
+					path="/orders"
+					element={
+						<RequireAuth user={user}>
+							<OrderIndex msgAlert={msgAlert} user={user} />
+						</RequireAuth>
+					}
+				/>
+				<Route
+					path="/orders/:id"
+					element={
+						<RequireAuth user={user}>
+							<ShowOrder msgAlert={msgAlert} user={user} />
+						</RequireAuth>
+					}
+				/>
+
+
 			</Routes>
 			{msgAlerts.map((msgAlert) => (
 				<AutoDismissAlert
