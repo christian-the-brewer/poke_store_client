@@ -138,7 +138,7 @@ const pokeColor = function (item) {
         return 'silver'
     } else if (item.pokemonType.toLowerCase() === 'poison') {
         return 'orchid'
-    } else if (item.pokemonType.toLowerCase() === 'eletric') {
+    } else if (item.pokemonType.toLowerCase() === 'electric') {
         return 'yellow'
     } else if (item.pokemonType.toLowerCase() === 'ground') {
         return 'peru'
@@ -160,7 +160,7 @@ const wordColor = function (item) {
         return 'silver'
     } else if (item.pokemonType.toLowerCase() === 'poison') {
         return 'orchid'
-    } else if (item.pokemonType.toLowerCase() === 'eletric') {
+    } else if (item.pokemonType.toLowerCase() === 'electric') {
         return 'yellow'
     } else if (item.pokemonType.toLowerCase() === 'ground') {
         return 'peru'
