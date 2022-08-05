@@ -142,7 +142,11 @@ const pokeColor = function (item) {
         return 'yellow'
     } else if (item.pokemonType.toLowerCase() === 'ground') {
         return 'peru'
-    }
+    } else if (item.pokemonType.toLowerCase() === 'fairy') {
+        return 'deepPink'
+    } else if (item.pokemonType.toLowerCase() === 'fighting') {
+        return 'orangeRed'
+    } 
 }
 
 const wordColor = function (item) {
