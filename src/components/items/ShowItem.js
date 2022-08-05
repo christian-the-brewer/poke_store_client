@@ -10,6 +10,7 @@ import LoadingScreen from '../shared/LoadingScreen'
 import { getOneItem, updateItem, removeItem } from '../../api/items'
 import messages from '../shared/AutoDismissAlert/messages'
 import EditItemModal from './EditItemModal'
+import ItemForm from '../shared/ItemForm'
 
 // We need to get the item's id from the parameters
 // Then we need to make a request to the api
@@ -75,9 +76,9 @@ const ShowItem = (props) => {
     return (
         <>
             <Container className="fluid">
-                <Card>
-                    <Card.Header>{item.name}</Card.Header>
-                    <Card.Body>
+                <Card >
+                    <Card.Header style={{backgroundColor: pokeColor(item)}}>{item.name}</Card.Header> 
+                    <Card.Body >
                         <img src={item.image} />
                         <Card.Text>
                             <p>Type: {item.pokemonType} </p>
@@ -86,7 +87,7 @@ const ShowItem = (props) => {
                             <p> Stock: {item.stock} </p>
                         </Card.Text>
                     </Card.Body>
-                    <Card.Footer>
+                    <Card.Footer style={{backgroundColor: pokeColor(item)}}>
                         {
 
                             <>
@@ -120,6 +121,50 @@ const ShowItem = (props) => {
             />
         </>
     )
+}
+
+const pokeColor = function (item) {
+    if (item.pokemonType === 'fire') {
+        return 'crimson'
+    } else if (item.pokemonType === 'grass') {
+       return 'lawnGreen'
+    } else if (item.pokemonType === 'water') {
+        return 'royalBlue'
+    } else if (item.pokemonType === 'bug') {
+        return 'sandyBrown'
+    } else if (item.pokemonType === 'flying') {
+        return 'skyBlue'
+    } else if (item.pokemonType === 'normal') {
+        return 'silver'
+    } else if (item.pokemonType === 'poison') {
+        return 'orchid'
+    } else if (item.pokemonType === 'eletric') {
+        return 'yellow'
+    } else if (item.pokemonType === 'ground') {
+        return 'peru'
+    }
+}
+
+const wordColor = function (item) {
+    if (item.pokemonType === 'fire') {
+        return 'crimson'
+    } else if (item.pokemonType === 'grass') {
+       return 'lawnGreen'
+    } else if (item.pokemonType === 'water') {
+        return 'royalBlue'
+    } else if (item.pokemonType === 'bug') {
+        return 'sandyBrown'
+    } else if (item.pokemonType === 'flying') {
+        return 'skyBlue'
+    } else if (item.pokemonType === 'normal') {
+        return 'silver'
+    } else if (item.pokemonType === 'poison') {
+        return 'orchid'
+    } else if (item.pokemonType === 'eletric') {
+        return 'yellow'
+    } else if (item.pokemonType === 'ground') {
+        return 'peru'
+    }
 }
 
 export default ShowItem
