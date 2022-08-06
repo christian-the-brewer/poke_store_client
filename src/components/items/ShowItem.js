@@ -84,7 +84,7 @@ const ShowItem = (props) => {
         
         .catch(err => {
             msgAlert({
-                heading: 'Error removing item',
+                heading: 'Error adding to cart',
                 message: messages.removeItemFailure,
                 variant: 'danger'
             })
@@ -101,7 +101,7 @@ const ShowItem = (props) => {
                 <Card >
                     <Card.Header style={{backgroundColor: pokeColor(item), fontSize: '50px', fontWeight: 'bold', textAlign: 'center'}}>{item.name}</Card.Header> 
                     <Card.Body >
-                        <img src={item.image} />
+                        <img src={item.image} style={{marginLeft: '35%'}}/>
                         <Card.Text>
                             <p style={{fontSize: '20px', fontWeight: 'bold'}} >Type: {item.pokemonType.toLowerCase()} </p>
                             <p style={{fontSize: '20px', fontWeight: 'bold'}} > Description: {item.description} </p>
@@ -172,6 +172,12 @@ const pokeColor = function (item) {
         return 'deepPink'
     } else if (item.pokemonType.toLowerCase() === 'fighting') {
         return 'orangeRed'
+    } else if (item.pokemonType.toLowerCase() === 'berries') {
+        return 'fireBrick'
+    } else if (item.pokemonType.toLowerCase() === 'pokeball') {
+        return 'gold'
+    } else if (item.pokemonType.toLowerCase() === 'general') {
+        return 'honeyDew'
     }
 }
 

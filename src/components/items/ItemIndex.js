@@ -109,6 +109,12 @@ const pokeColor = function (item) {
         return 'deepPink'
     } else if (item.pokemonType.toLowerCase() === 'fighting') {
         return 'orangeRed'
+    } else if (item.pokemonType.toLowerCase() === 'berries') {
+        return 'fireBrick'
+    } else if (item.pokemonType.toLowerCase() === 'pokeball') {
+        return 'gold'
+    } else if (item.pokemonType.toLowerCase() === 'general') {
+        return 'honeyDew'
     }
 }
 
