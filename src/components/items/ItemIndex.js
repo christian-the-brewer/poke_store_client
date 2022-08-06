@@ -54,11 +54,11 @@ const ItemIndex = (props) => {
 
     const itemCards = items.map((item, index) => (
         <Card style={{ width: '30%', margin: 5 }} key={index}>
-            <Card.Header style={{backgroundColor: pokeColor(item)}} >{item.name}</Card.Header>
+            <Card.Header style={{backgroundColor: pokeColor(item), textAlign: 'center', fontSize: '40px', fontWeight: 'bold'}} >{item.name}</Card.Header>
             <Card.Body>
                 <Link to={`/items/${item._id}`}><img src={item.image} alt={item.name}></img></Link>
             </Card.Body>
-            <Card.Footer style={{backgroundColor: pokeColor(item), color: wordColor(item) }}>
+            <Card.Footer style={{backgroundColor: pokeColor(item), color: wordColor(item), fontSize: '25px', fontWeight: 'bold' }}>
                 <div>
                     <p>
                         Price: ${item.cost}
@@ -114,7 +114,7 @@ const pokeColor = function (item) {
 
 const wordColor = function (item) {
     if (item.pokemonType.toLowerCase() === 'fire') {
-        return 'blue'
+        return 'black'
     } else if (item.pokemonType.toLowerCase() === 'grass') {
        return 'black'
     } else if (item.pokemonType.toLowerCase() === 'water') {

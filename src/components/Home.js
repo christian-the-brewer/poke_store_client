@@ -6,7 +6,7 @@ const Home = (props) => {
 
 	return (
 		<>
-			<h2>All Products</h2>
+			<h2 style={{textAlign: 'center', fontSize: '50px', fontWeight: 'bold'}} >All Products</h2>
 			<ItemIndex
 				msgAlert={msgAlert}
 			/>

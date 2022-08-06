@@ -69,6 +69,28 @@ const ShowItem = (props) => {
             })
     }
 
+    const addToTheCart = () => {
+        // console.log('cart')
+        addToTheCart(item._id)
+        .then(() => {
+            msgAlert({
+                heading: 'Success',
+                message: messages.removeItemSuccess,
+                variant: 'success'
+            })
+        })
+        
+        .then(() => { navigate('/') })
+        
+        .catch(err => {
+            msgAlert({
+                heading: 'Error removing item',
+                message: messages.removeItemFailure,
+                variant: 'danger'
+            })
+        })
+    }
+
     if (!item) {
         return <LoadingScreen />
     }
@@ -77,14 +99,14 @@ const ShowItem = (props) => {
         <>
             <Container className="fluid">
                 <Card >
-                    <Card.Header style={{backgroundColor: pokeColor(item)}}>{item.name}</Card.Header> 
+                    <Card.Header style={{backgroundColor: pokeColor(item), fontSize: '50px', fontWeight: 'bold', textAlign: 'center'}}>{item.name}</Card.Header> 
                     <Card.Body >
                         <img src={item.image} />
                         <Card.Text>
-                            <p>Type: {item.pokemonType.toLowerCase()} </p>
-                            <p> Description: {item.description} </p>
-                            <p> Cost: {item.cost} </p>
-                            <p> Stock: {item.stock} </p>
+                            <p style={{fontSize: '20px', fontWeight: 'bold'}} >Type: {item.pokemonType.toLowerCase()} </p>
+                            <p style={{fontSize: '20px', fontWeight: 'bold'}} > Description: {item.description} </p>
+                            <p style={{fontSize: '20px', fontWeight: 'bold'}} > Cost: {item.cost} </p>
+                            <p style={{fontSize: '20px', fontWeight: 'bold'}} > Stock: {item.stock} </p>
                         </Card.Text>
                     </Card.Body>
                     <Card.Footer style={{backgroundColor: pokeColor(item)}}>
@@ -102,6 +124,10 @@ const ShowItem = (props) => {
                                     variant="danger"
                                 >
                                     Delete This Item
+                                </Button>
+                                <Button onClick={() => addToTheCart()}
+                                className="m-2">
+                                    Add To Cart
                                 </Button>
                             </>
 
@@ -138,7 +164,7 @@ const pokeColor = function (item) {
         return 'silver'
     } else if (item.pokemonType.toLowerCase() === 'poison') {
         return 'orchid'
-    } else if (item.pokemonType.toLowerCase() === 'eletric') {
+    } else if (item.pokemonType.toLowerCase() === 'electric') {
         return 'yellow'
     } else if (item.pokemonType.toLowerCase() === 'ground') {
         return 'peru'
