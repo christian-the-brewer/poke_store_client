@@ -17,7 +17,6 @@ import CreateItem from './components/items/CreateItem'
 import ItemIndex from './components/items/ItemIndex'
 import ShowCart from './components/cart/ShowCart'
 
-
 const App = () => {
 
 	const [user, setUser] = useState(null)
@@ -99,7 +98,7 @@ const App = () => {
 					}
 				/>
 
-				{/* <Route
+				<Route
 					path="/orders"
 					element={
 						<RequireAuth user={user}>
@@ -114,7 +113,7 @@ const App = () => {
 							<ShowOrder msgAlert={msgAlert} user={user} />
 						</RequireAuth>
 					}
-				/> */}
+				/>
 
 
 			</Routes>
