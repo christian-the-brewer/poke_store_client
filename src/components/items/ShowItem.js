@@ -11,6 +11,7 @@ import { getOneItem, updateItem, removeItem } from '../../api/items'
 import messages from '../shared/AutoDismissAlert/messages'
 import EditItemModal from './EditItemModal'
 import ItemForm from '../shared/ItemForm'
+import StripeCheckout from 'react-stripe-checkout'
 
 // We need to get the item's id from the parameters
 // Then we need to make a request to the api
@@ -71,7 +72,7 @@ const ShowItem = (props) => {
 
     const addToTheCart = () => {
         // console.log('cart')
-        addToTheCart(item._id)
+        addToTheCart(item.id)
         .then(() => {
             msgAlert({
                 heading: 'Success',
@@ -93,6 +94,10 @@ const ShowItem = (props) => {
 
     if (!item) {
         return <LoadingScreen />
+    }
+
+    function handleToken(token, addresses) {
+        console.log(token, addresses)
     }
 
     return (
@@ -129,6 +134,13 @@ const ShowItem = (props) => {
                                 className="m-2">
                                     Add To Cart
                                 </Button>
+                                <StripeCheckout 
+                                stripeKey="pk_test_51LTtnNDtEn7Sojm7iPaYEA0jfQj07zxKZ92tb1ZrdFNZuI7ecXBKHuwGmIKi6JjNwE9pAPE8b23SN6KemYzLrNb600prbjUyDe"
+                                token={handleToken}
+                                billingAddress
+                                shippingAddress
+                                amount={item.cost * 100}
+                                />
                             </>
 
 
