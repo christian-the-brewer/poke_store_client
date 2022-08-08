@@ -70,26 +70,27 @@ const ShowItem = (props) => {
             })
     }
 
-    const addToTheCart = () => {
+
+    const addToTheCart = (item) => {
         // console.log('cart')
-        addToTheCart(item._id)
-            .then(() => {
-                msgAlert({
-                    heading: 'Success',
-                    message: messages.removeItemSuccess,
-                    variant: 'success'
-                })
+        addToTheCart(item.id)
+        .then(() => {
+            msgAlert({
+                heading: 'Success',
+                message: messages.removeItemSuccess,
+                variant: 'success'
             })
-
-            .then(() => { navigate('/') })
-
-            .catch(err => {
-                msgAlert({
-                    heading: 'Error removing item',
-                    message: messages.removeItemFailure,
-                    variant: 'danger'
-                })
+        })
+        
+        .then(() => { navigate('/') })
+        
+        .catch(err => {
+            msgAlert({
+                heading: 'Error adding to cart',
+                message: messages.removeItemFailure,
+                variant: 'danger'
             })
+        })
     }
 
     if (!item) {
@@ -97,24 +98,33 @@ const ShowItem = (props) => {
     }
 
     function handleToken(token, addresses) {
-        console.log(token, addresses)
+        if(token) {
+            msgAlert({
+                heading: 'Success',
+                message: messages.paymentSuccessful,
+                variant: 'success'
+            })
+           setTimeout(() => {
+            navigate('/')
+           },3000)
+        }
     }
 
     return (
         <>
             <Container className="fluid">
                 <Card >
-                    <Card.Header style={{ backgroundColor: pokeColor(item), fontSize: '50px', fontWeight: 'bold', textAlign: 'center' }}>{item.name}</Card.Header>
+                    <Card.Header style={{backgroundColor: pokeColor(item), fontSize: '50px', fontWeight: 'bold', textAlign: 'center'}}>{item.name}</Card.Header> 
                     <Card.Body >
-                        <img src={item.image} style={{ marginLeft: '35%' }} />
+                        <img src={item.image} style={{marginLeft: '35%'}}/>
                         <Card.Text>
-                            <p style={{ fontSize: '20px', fontWeight: 'bold' }} >Type: {item.pokemonType} </p>
-                            <p style={{ fontSize: '20px', fontWeight: 'bold' }} > Description: {item.description} </p>
-                            <p style={{ fontSize: '20px', fontWeight: 'bold' }} > Cost: {item.cost} </p>
-                            <p style={{ fontSize: '20px', fontWeight: 'bold' }} > Stock: {item.stock} </p>
+                            <p style={{fontSize: '20px', fontWeight: 'bold'}} >Type: {item.pokemonType.toLowerCase()} </p>
+                            <p style={{fontSize: '20px', fontWeight: 'bold'}} > Description: {item.description} </p>
+                            <p style={{fontSize: '20px', fontWeight: 'bold'}} > Cost: {item.cost} </p>
+                            <p style={{fontSize: '20px', fontWeight: 'bold'}} > Stock: {item.stock} </p>
                         </Card.Text>
                     </Card.Body>
-                    <Card.Footer style={{ backgroundColor: pokeColor(item) }}>
+                    <Card.Footer style={{backgroundColor: pokeColor(item)}}>
                         {
 
                             <>
@@ -131,15 +141,18 @@ const ShowItem = (props) => {
                                     Delete This Item
                                 </Button>
                                 <Button onClick={() => addToTheCart()}
-                                    className="m-2">
+                                className="m-2">
                                     Add To Cart
                                 </Button>
-                                <StripeCheckout
-                                    stripeKey="pk_test_51LTtnNDtEn7Sojm7iPaYEA0jfQj07zxKZ92tb1ZrdFNZuI7ecXBKHuwGmIKi6JjNwE9pAPE8b23SN6KemYzLrNb600prbjUyDe"
-                                    token={handleToken}
-                                    billingAddress
-                                    shippingAddress
-                                    amount={item.cost * 100}
+                                <StripeCheckout 
+                                stripeKey="pk_test_51LTtnNDtEn7Sojm7iPaYEA0jfQj07zxKZ92tb1ZrdFNZuI7ecXBKHuwGmIKi6JjNwE9pAPE8b23SN6KemYzLrNb600prbjUyDe"
+                                token={handleToken}
+                                billingAddress
+                                shippingAddress
+                                amount={item.cost * 100}
+                                label="Purchase Item"
+                                image={item.image}
+                                currency="USD"
                                 />
                             </>
 
@@ -165,7 +178,7 @@ const pokeColor = function (item) {
     if (item.pokemonType.toLowerCase() === 'fire') {
         return 'crimson'
     } else if (item.pokemonType.toLowerCase() === 'grass') {
-        return 'lawnGreen'
+       return 'lawnGreen'
     } else if (item.pokemonType.toLowerCase() === 'water') {
         return 'royalBlue'
     } else if (item.pokemonType.toLowerCase() === 'bug') {
@@ -197,7 +210,7 @@ const wordColor = function (item) {
     if (item.pokemonType.toLowerCase() === 'fire') {
         return 'crimson'
     } else if (item.pokemonType.toLowerCase() === 'grass') {
-        return 'lawnGreen'
+       return 'lawnGreen'
     } else if (item.pokemonType.toLowerCase() === 'water') {
         return 'royalBlue'
     } else if (item.pokemonType.toLowerCase() === 'bug') {

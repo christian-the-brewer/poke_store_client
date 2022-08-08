@@ -54,7 +54,7 @@ const ItemIndex = (props) => {
 
     const itemCards = items.map((item, index) => (
         <Card style={{ width: '30%', margin: 5 }} key={index}>
-            <Card.Header style={{backgroundColor: pokeColor(item), textAlign: 'center', fontSize: '40px', fontWeight: 'bold'}} >{item.name}</Card.Header>
+            <Link to={`/items/${item._id}`} style={{ textDecoration: 'none', color: 'black'}}><Card.Header style={{backgroundColor: pokeColor(item), textAlign: 'center', fontSize: '40px', fontWeight: 'bold'}} >{item.name}</Card.Header></Link>
             <Card.Body>
                 <Link to={`/items/${item._id}`}><img src={item.image} alt={item.name}></img></Link>
             </Card.Body>
