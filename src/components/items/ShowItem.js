@@ -139,9 +139,11 @@ const ShowItem = (props) => {
 
     // function availability() {
     //     if (item.stock = 0) {
-    //         return ('Out of Stock Sorry')
+    //         return (<p>Out of Stock Sorry</p>)
     //     } else {
-            
+    //         return (
+    //             <p>hi</p>
+    //         )
     //     }
     // }
 
@@ -176,11 +178,20 @@ const ShowItem = (props) => {
                                 >
                                     Delete This Item
                                 </Button>
-                                <Button onClick={() => addToTheCart()}
+                              
+                              
+                                {(item.stock > 0 ) ?
+                                (<Button onClick={() => addToTheCart()}
                                 className="m-2">
                                     Add To Cart
-                                </Button>
-                                <StripeCheckout 
+                                </Button>) : (<p>Out of stock</p>) }
+
+                                 {/* <Button onClick={() => addToTheCart()} */}
+                                {/* // className="m-2">
+                                //     Add To Cart
+                                // </Button> */}
+                              {(item.stock > 0 ) ?
+                               ( <StripeCheckout 
                                 stripeKey="pk_test_51LTtnNDtEn7Sojm7iPaYEA0jfQj07zxKZ92tb1ZrdFNZuI7ecXBKHuwGmIKi6JjNwE9pAPE8b23SN6KemYzLrNb600prbjUyDe"
                                 token={handleToken}
                                 billingAddress
@@ -189,7 +200,7 @@ const ShowItem = (props) => {
                                 label="Purchase Item"
                                 image={item.image}
                                 currency="USD"
-                                />
+                                />) : (<p></p>) }
                             </>
 
 
