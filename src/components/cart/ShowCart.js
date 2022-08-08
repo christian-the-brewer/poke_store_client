@@ -24,7 +24,7 @@ const ShowCart = (props) => {
 
 
     useEffect(() => {
-        getOneCart(id)
+        getOneCart(user)
             .then(res => setCart(res.data.cart))
             .catch(err => {
                 msgAlert({
@@ -34,7 +34,7 @@ const ShowCart = (props) => {
                 })
                 navigate('/')
             })
-    }, [updated])
+    }, [])
 
 
 
@@ -44,9 +44,10 @@ const ShowCart = (props) => {
 
 
     const cartProducts = cart.products.map((product, index) => (
-        <li key={index}>{product.name}: {product.prices}</li>
-    ))
-
+        <li key={index}>{product.name}: ${product.cost}</li>
+        
+))
+console.log(cart.products) 
     return (
         <>
             <Container className="fluid">

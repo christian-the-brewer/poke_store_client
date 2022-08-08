@@ -10,8 +10,12 @@ export const getAllCarts = () => {
 }
 
 // READ => SHOW
-export const getOneCart = () => {
-    return axios(`${apiUrl}/carts`)
+export const getOneCart = (user) => {
+    return axios({url: apiUrl + '/carts',
+    headers: {
+        Authorization: `Token token=${user.token}`,
+    },
+    })
 }
 
 // CREATE

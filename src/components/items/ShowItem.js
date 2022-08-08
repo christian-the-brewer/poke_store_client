@@ -76,7 +76,7 @@ const ShowItem = (props) => {
 
 
     const addToTheCart = () => {
-        console.log('user', user)
+        console.log('this is item in add to cart', item)
         addToCart(user, item)
             .then(() => {
                 msgAlert({

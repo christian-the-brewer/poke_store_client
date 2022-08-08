@@ -93,9 +93,9 @@ const App = () => {
 				<Route
 					path="/carts"
 					element={
-						<RequireAuth user={user}>
+						// <RequireAuth user={user}>
 							<ShowCart msgAlert={msgAlert} user={user} />
-						</RequireAuth>
+						// </RequireAuth>
 					}
 				/>
 
