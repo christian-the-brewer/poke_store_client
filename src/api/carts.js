@@ -52,3 +52,16 @@ export const removeCart = (user, cartId) => {
         }
     })
 }
+
+// Add to cart
+export const addToCart = (user, cartId, addedItem) => {
+
+    return axios({
+        url: `${apiUrl}/carts/add/${cartId}`,
+        method: 'PATCH',
+        headers: {
+            Authorization: `Token token=${user.token}`,
+        },
+        data: { product: addedItem }
+    })
+}

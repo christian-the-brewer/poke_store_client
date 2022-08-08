@@ -16,7 +16,7 @@ export const getOneItem = (id) => {
 
 // CREATE
 export const createItem = (user, newItem) => {
-    // console.log('createPet in api was hit')
+
     // in our createpet form, we're building an object
     // when we pass that object into the api createPet function,
     // it's going to look like the pets in our database
@@ -63,3 +63,4 @@ export const removeItem = (user, itemId) => {
         }
     })
 }
+
