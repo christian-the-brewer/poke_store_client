@@ -11,7 +11,7 @@ const messages = {
 	updateItemSuccess: 'Item updated Successfully!',
 	updateItemFailure: 'Couldnt update item, please try again.',
 	getItemsFailure: 'Error fetching items.',
-	getOrdersFailure: 'Error fetching past orders',
+	getOrdersFailure: 'Error fetching orders',
 }
 
 module.exports = messages
