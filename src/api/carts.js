@@ -10,8 +10,8 @@ export const getAllCarts = () => {
 }
 
 // READ => SHOW
-export const getOneCart = (id) => {
-    return axios(`${apiUrl}/carts/${id}`)
+export const getOneCart = () => {
+    return axios(`${apiUrl}/carts`)
 }
 
 // CREATE
@@ -54,11 +54,11 @@ export const removeCart = (user, cartId) => {
 }
 
 // Add to cart
-export const addToCart = (user, cartId, addedItem) => {
+export const addToCart = (user, addedItem) => {
 
     return axios({
-        url: `${apiUrl}/carts/add/${cartId}`,
-        method: 'PATCH',
+        url: `${apiUrl}/carts/add/`,
+        method: 'POST',
         headers: {
             Authorization: `Token token=${user.token}`,
         },
