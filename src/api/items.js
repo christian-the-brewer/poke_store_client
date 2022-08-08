@@ -44,23 +44,23 @@ export const updateItem = (user, updatedItem) => {
     console.log('this is updatedItem', updatedItem)
 
     return axios({
-        url: `${apiUrl}/items/${updatedItem._id}`,
+        url: `${apiUrl}/items/${updatedItem._id}/stock`,
         method: 'PATCH',
         headers: {
             Authorization: `Token token=${user.token}`,
         },
-        data: { item: updatedItem }
+        data: { stock: updatedItem }
     })
 }
 
 
 
-export const updateStockItem = (updatedStock) => {
+export const updateStockItem = (item, updatedStock) => {
 
     console.log('this is updatedStock', updatedStock)
 
     return axios({
-        url: `${apiUrl}/items/${updatedStock._id}`,
+        url: `${apiUrl}/items/${item._id}`,
         method: 'PATCH',
         data: { item: updatedStock }
     })

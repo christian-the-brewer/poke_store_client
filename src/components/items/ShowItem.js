@@ -28,7 +28,7 @@ const ShowItem = (props) => {
     // useNavigate returns a function
     // we can call that function to redirect the user wherever we want to
 
-    const { user, msgAlert, updatedStock } = props
+    const { user, msgAlert, updatedStock, triggerRefresh } = props
     console.log('user in props', user)
     console.log('the item in showItem', item)
     // destructuring to get the id value from our route parameters
@@ -108,15 +108,25 @@ const ShowItem = (props) => {
      // how will i make this request from the db?
      // should this api call be inside this callback function or be a seperate function that preceeds it
 
+    
 
-//      function changeQuantity() {
-//     const value = item.stock
-//    this.setState({stock: value - 1})
-// }
+    const changeQuantity = (item) => {
+        // e.preventDefault()
+        const updatedStock = item.stock - 1
+         updateStockItem(item, updatedStock)
+            .then(() => triggerRefresh())
+            .catch(() =>
+                msgAlert({
+                    heading: 'Oh No!',
+                    message: messages.updateItemFailure,
+                    variant: 'danger'
+                })
+            )
+}
 
 
     function handleToken(token, addresses) {
-        // changeQuantity(item)
+        changeQuantity(item)
         if(token) {
             msgAlert({
                 heading: 'Success',
