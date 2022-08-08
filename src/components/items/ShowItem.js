@@ -7,7 +7,7 @@ import { useParams, useNavigate } from 'react-router-dom'
 import { Container, Card, Button } from 'react-bootstrap'
 
 import LoadingScreen from '../shared/LoadingScreen'
-import { getOneItem, updateItem, removeItem } from '../../api/items'
+import { getOneItem, updateItem, removeItem, updateStockItem } from '../../api/items'
 import messages from '../shared/AutoDismissAlert/messages'
 import EditItemModal from './EditItemModal'
 import ItemForm from '../shared/ItemForm'
@@ -16,6 +16,7 @@ import StripeCheckout from 'react-stripe-checkout'
 // We need to get the item's id from the parameters
 // Then we need to make a request to the api
 // Then we need to display the results in this component
+
 
 const ShowItem = (props) => {
     const [item, setItem] = useState(null)
@@ -27,10 +28,12 @@ const ShowItem = (props) => {
     // useNavigate returns a function
     // we can call that function to redirect the user wherever we want to
 
-    const { user, msgAlert } = props
+    const { user, msgAlert, updatedStock } = props
     console.log('user in props', user)
     console.log('the item in showItem', item)
     // destructuring to get the id value from our route parameters
+
+
 
     useEffect(() => {
         getOneItem(id)
@@ -97,7 +100,23 @@ const ShowItem = (props) => {
         return <LoadingScreen />
     }
 
+    //changeQuantity() declaring callback function for setting state of the item quantity
+     // will need the item to change the quantity of and the setter function passed through from props
+     // call function before the set timeout and navigate to change quantity in state
+     // do I want to make an api call to change the data in the db?
+     // what kind of data do i need from the db?
+     // how will i make this request from the db?
+     // should this api call be inside this callback function or be a seperate function that preceeds it
+
+
+//      function changeQuantity() {
+//     const value = item.stock
+//    this.setState({stock: value - 1})
+// }
+
+
     function handleToken(token, addresses) {
+        // changeQuantity(item)
         if(token) {
             msgAlert({
                 heading: 'Success',

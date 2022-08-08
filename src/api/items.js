@@ -35,11 +35,11 @@ export const createItem = (user, newItem) => {
 
 // UPDATE
 export const updateItem = (user, updatedItem) => {
-    // console.log('createPet in api was hit')
-    // in our createpet form, we're building an object
-    // when we pass that object into the api createPet function,
-    // it's going to look like the pets in our database
-    // we're going to refer to this as newPet
+    // console.log('createItem in api was hit')
+    // in our createitem form, we're building an object
+    // when we pass that object into the api createItem function,
+    // it's going to look like the items in our database
+    // we're going to refer to this as newItem
     // console.log('this is user', user)
     console.log('this is updatedItem', updatedItem)
 
@@ -50,6 +50,19 @@ export const updateItem = (user, updatedItem) => {
             Authorization: `Token token=${user.token}`,
         },
         data: { item: updatedItem }
+    })
+}
+
+
+
+export const updateStockItem = (updatedStock) => {
+
+    console.log('this is updatedStock', updatedStock)
+
+    return axios({
+        url: `${apiUrl}/items/${updatedStock._id}`,
+        method: 'PATCH',
+        data: { item: updatedStock }
     })
 }
 
