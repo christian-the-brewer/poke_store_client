@@ -44,12 +44,12 @@ export const updateItem = (user, updatedItem) => {
     console.log('this is updatedItem', updatedItem)
 
     return axios({
-        url: `${apiUrl}/items/${updatedItem._id}/stock`,
+        url: `${apiUrl}/items/${updatedItem._id}`,
         method: 'PATCH',
         headers: {
             Authorization: `Token token=${user.token}`,
         },
-        data: { stock: updatedItem }
+        data: { item: updatedItem }
     })
 }
 
@@ -60,7 +60,7 @@ export const updateStockItem = (item, updatedStock) => {
     console.log('this is updatedStock', updatedStock)
 
     return axios({
-        url: `${apiUrl}/items/${item._id}`,
+        url: `${apiUrl}/items/stock/${item._id}`,
         method: 'PATCH',
         data: { item: updatedStock }
     })

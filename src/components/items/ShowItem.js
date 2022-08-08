@@ -114,13 +114,10 @@ const ShowItem = (props) => {
         // e.preventDefault()
         const updatedStock = item.stock - 1
          updateStockItem(item, updatedStock)
-            .then(() => triggerRefresh())
+            .then(console.log('this is item and updated stock', item, updatedStock))
+            // .then(() => triggerRefresh())
             .catch(() =>
-                msgAlert({
-                    heading: 'Oh No!',
-                    message: messages.updateItemFailure,
-                    variant: 'danger'
-                })
+                console.log('works')
             )
 }
 
@@ -138,6 +135,16 @@ const ShowItem = (props) => {
            },3000)
         }
     }
+
+
+    // function availability() {
+    //     if (item.stock = 0) {
+    //         return ('Out of Stock Sorry')
+    //     } else {
+            
+    //     }
+    // }
+
 
     return (
         <>
