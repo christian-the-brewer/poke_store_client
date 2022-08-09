@@ -142,13 +142,9 @@ const ShowItem = (props) => {
     //     if (item.stock = 0) {
     //         return (<p>Out of Stock Sorry</p>)
     //     } else {
-<<<<<<< HEAD
-
-=======
     //         return (
     //             <p>hi</p>
     //         )
->>>>>>> stockUpdate
     //     }
     // }
 
