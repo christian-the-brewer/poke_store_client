@@ -12,6 +12,7 @@ import EditCartModal from './EditCartModal'
 
 const ShowCart = (props) => {
     const [cart, setCart] = useState(null)
+    const [total, setTotal] = useState(0)
     const [editModalShow, setEditModalShow] = useState(false)
     const [updated, setUpdated] = useState(false)
 
@@ -37,17 +38,26 @@ const ShowCart = (props) => {
     }, [])
 
 
+    const updateCartTotal = (cart) => {
+        let sum = 0
+        cart.forEach(product => {
+            sum += product.cost
+        })
+        return setTotal(sum)
+    }
 
     if (!cart) {
         return <LoadingScreen />
     }
 
 
+
+
     const cartProducts = cart.products.map((product, index) => (
         <li key={index}>{product.name}: ${product.cost}</li>
-        
-))
-console.log(cart.products) 
+
+    ))
+    console.log(cart.products)
     return (
         <>
             <Container className="fluid">
