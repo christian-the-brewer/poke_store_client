@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 
 import { Container, Card, Button } from 'react-bootstrap'
-
+import StripeCheckout from 'react-stripe-checkout'
 import LoadingScreen from '../shared/LoadingScreen'
 import { getOneCart, updateCart } from '../../api/carts'
 import messages from '../shared/AutoDismissAlert/messages'
@@ -36,8 +36,22 @@ const ShowCart = (props) => {
             })
     }, [updated])
 
+ 
 
+    function handleToken(token, addresses) {
+        if(token) {
+            msgAlert({
+                heading: 'Success',
+                message: messages.paymentSuccessful,
+                variant: 'success'
+            })
+           setTimeout(() => {
+            navigate('/')
+           },3000)
+        }
+    }
 
+ 
     if (!cart) {
         return <LoadingScreen />
     }
@@ -71,7 +85,16 @@ const ShowCart = (props) => {
                                 >
                                     Edit Cart
                                 </Button>
-
+                               
+                               <StripeCheckout 
+                                stripeKey="pk_test_51LTtnNDtEn7Sojm7iPaYEA0jfQj07zxKZ92tb1ZrdFNZuI7ecXBKHuwGmIKi6JjNwE9pAPE8b23SN6KemYzLrNb600prbjUyDe"
+                                token={handleToken}
+                                billingAddress
+                                shippingAddress
+                                amount={1 * 100}
+                                label="Purchase Items"
+                                currency="USD"
+                                />
                             </>
 
 
