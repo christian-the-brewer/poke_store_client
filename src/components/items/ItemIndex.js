@@ -2,9 +2,11 @@ import { useState, useEffect } from 'react'
 import { Container, Card, Button } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 
+import { useParams, useNavigate } from 'react-router-dom'
 import LoadingScreen from '../shared/LoadingScreen'
 import { getAllItems } from '../../api/items'
 import messages from '../shared/AutoDismissAlert/messages'
+import { addToCart } from '../../api/carts'
 
 //card container style
 const cardContainerStyle = {
@@ -13,11 +15,14 @@ const cardContainerStyle = {
     justifyContent: 'center'
 }
 
+
+
 const ItemIndex = (props) => {
     const [items, setItems] = useState(null)
     const [error, setError] = useState(false)
 
-    const { msgAlert } = props
+    const navigate = useNavigate()
+    const { user, msgAlert } = props
 
     //console.log('Props in ItemIndex', props)
 
@@ -37,8 +42,26 @@ const ItemIndex = (props) => {
             })
     }, [])
 
-    const addToCart = () => {
+    const addToTheCart = () => {
+        console.log('this is item in add to cart', items)
+        addToCart(user, items)
+            .then(() => {
+                msgAlert({
+                    heading: 'Success',
+                    message: messages.removeItemSuccess,
+                    variant: 'success'
+                })
+            })
 
+            .then(() => { navigate('/') })
+
+            .catch(err => {
+                msgAlert({
+                    heading: 'Error adding to cart',
+                    message: messages.removeItemFailure,
+                    variant: 'danger'
+                })
+            })
     }
 
     if (error) {
@@ -68,10 +91,8 @@ const ItemIndex = (props) => {
                     </p>
                 </div>
                 <div>
-                    <Button onClick={() => addToCart()}
-                        className="m-2"
-                        variant="success"
-                    >
+                    <Button onClick={() => addToTheCart()}
+                                className="m-2">
                         Add to Cart
                     </Button>
                 </div>
