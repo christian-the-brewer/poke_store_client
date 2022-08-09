@@ -12,22 +12,22 @@ import SignUp from './components/auth/SignUp'
 import SignIn from './components/auth/SignIn'
 import SignOut from './components/auth/SignOut'
 import ChangePassword from './components/auth/ChangePassword'
-import ShowItem from './components/items/ShowItem'
+// import ShowItem from './components/items/ShowItem'
 import CreateItem from './components/items/CreateItem'
 import ItemIndex from './components/items/ItemIndex'
 import ShowCart from './components/cart/ShowCart'
-import ShowOrder from './components/orders/ShowOrder'
+// import ShowOrder from './components/orders/ShowOrder'
 import OrderIndex from './components/orders/OrderIndex'
 const App = () => {
 
 	const [user, setUser] = useState(null)
 	const [msgAlerts, setMsgAlerts] = useState([])
 
-	console.log('user in app', user)
-	console.log('message alerts', msgAlerts)
+	// console.log('user in app', user)
+	// console.log('message alerts', msgAlerts)
 	const clearUser = () => {
-		console.log('clear user ran')
-		setUser(null)
+		// console.log('clear user ran')
+		// setUser(null)
 	}
 
 	const deleteAlert = (id) => {
@@ -77,10 +77,10 @@ const App = () => {
 					path="/items"
 					element={<ItemIndex user={user} msgAlert={msgAlert} />}
 				/>
-				<Route
+				{/* <Route
 					path="/items/:id"
 					element={<ShowItem user={user} msgAlert={msgAlert} />}
-				/>
+				/> */}
 				<Route
 					path="/addItem"
 					element={
@@ -100,21 +100,21 @@ const App = () => {
 				/>
 
 				<Route
-					path="/order"
+					path="/orders"
 					element={
 						<RequireAuth user={user}>
 							<OrderIndex msgAlert={msgAlert} user={user} />
 						</RequireAuth>
 					}
 				/>
-				<Route
+				{/* <Route
 					path="/orders/:id"
 					element={
 						<RequireAuth user={user}>
 							<ShowOrder msgAlert={msgAlert} user={user} />
 						</RequireAuth>
 					}
-				/>
+				/> */}
 
 
 			</Routes>

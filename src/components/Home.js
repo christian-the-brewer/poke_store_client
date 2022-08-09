@@ -8,7 +8,7 @@ import ItemIndex from "./items/ItemIndex"
 // }
 
 const Home = (props) => {
-	const { msgAlert, user } = props
+	const { msgAlert } = props
 	//console.log('props in home', props)
 
 	return (
