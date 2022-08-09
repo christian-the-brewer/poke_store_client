@@ -183,22 +183,6 @@ const ShowItem = (props) => {
                                 >
                                     Delete This Item
                                 </Button>
-<<<<<<< HEAD
-                                <Button onClick={addToTheCart}
-                                    className="m-2">
-                                    Add To Cart
-                                </Button>
-                                <StripeCheckout
-                                    stripeKey="pk_test_51LTtnNDtEn7Sojm7iPaYEA0jfQj07zxKZ92tb1ZrdFNZuI7ecXBKHuwGmIKi6JjNwE9pAPE8b23SN6KemYzLrNb600prbjUyDe"
-                                    token={handleToken}
-                                    billingAddress
-                                    shippingAddress
-                                    amount={item.cost * 100}
-                                    label="Purchase Item"
-                                    image={item.image}
-                                    currency="USD"
-                                />
-=======
                               
                               
                                 {(item.stock > 0 ) ?
@@ -222,7 +206,6 @@ const ShowItem = (props) => {
                                 image={item.image}
                                 currency="USD"
                                 />) : (<p></p>) }
->>>>>>> stockUpdate
                             </>
 
 
