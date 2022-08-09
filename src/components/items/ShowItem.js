@@ -142,13 +142,6 @@ const ShowItem = (props) => {
     //     if (item.stock = 0) {
     //         return (<p>Out of Stock Sorry</p>)
     //     } else {
-<<<<<<< HEAD
-
-=======
-    //         return (
-    //             <p>hi</p>
-    //         )
->>>>>>> stockUpdate
     //     }
     // }
 
@@ -183,46 +176,29 @@ const ShowItem = (props) => {
                                 >
                                     Delete This Item
                                 </Button>
-<<<<<<< HEAD
-                                <Button onClick={addToTheCart}
-                                    className="m-2">
-                                    Add To Cart
-                                </Button>
-                                <StripeCheckout
-                                    stripeKey="pk_test_51LTtnNDtEn7Sojm7iPaYEA0jfQj07zxKZ92tb1ZrdFNZuI7ecXBKHuwGmIKi6JjNwE9pAPE8b23SN6KemYzLrNb600prbjUyDe"
-                                    token={handleToken}
-                                    billingAddress
-                                    shippingAddress
-                                    amount={item.cost * 100}
-                                    label="Purchase Item"
-                                    image={item.image}
-                                    currency="USD"
-                                />
-=======
-                              
-                              
-                                {(item.stock > 0 ) ?
-                                (<Button onClick={() => addToTheCart()}
-                                className="m-2">
-                                    Add To Cart
-                                </Button>) : (<p>Out of stock</p>) }
 
-                                 {/* <Button onClick={() => addToTheCart()} */}
+
+                                {(item.stock > 0) ?
+                                    (<Button onClick={() => addToTheCart()}
+                                        className="m-2">
+                                        Add To Cart
+                                    </Button>) : (<p>Out of stock</p>)}
+
+                                {/* <Button onClick={() => addToTheCart()} */}
                                 {/* // className="m-2">
                                 //     Add To Cart
                                 // </Button> */}
-                              {(item.stock > 0 ) ?
-                               ( <StripeCheckout 
-                                stripeKey="pk_test_51LTtnNDtEn7Sojm7iPaYEA0jfQj07zxKZ92tb1ZrdFNZuI7ecXBKHuwGmIKi6JjNwE9pAPE8b23SN6KemYzLrNb600prbjUyDe"
-                                token={handleToken}
-                                billingAddress
-                                shippingAddress
-                                amount={item.cost * 100}
-                                label="Purchase Item"
-                                image={item.image}
-                                currency="USD"
-                                />) : (<p></p>) }
->>>>>>> stockUpdate
+                                {(item.stock > 0) ?
+                                    (<StripeCheckout
+                                        stripeKey="pk_test_51LTtnNDtEn7Sojm7iPaYEA0jfQj07zxKZ92tb1ZrdFNZuI7ecXBKHuwGmIKi6JjNwE9pAPE8b23SN6KemYzLrNb600prbjUyDe"
+                                        token={handleToken}
+                                        billingAddress
+                                        shippingAddress
+                                        amount={item.cost * 100}
+                                        label="Purchase Item"
+                                        image={item.image}
+                                        currency="USD"
+                                    />) : (<p></p>)}
                             </>
 
 
