@@ -88,7 +88,7 @@ const ShowCart = (props) => {
                                     Edit Cart
                                 </Button>
                                
-                               <StripeCheckout 
+                                <StripeCheckout 
                                 stripeKey="pk_test_51LTtnNDtEn7Sojm7iPaYEA0jfQj07zxKZ92tb1ZrdFNZuI7ecXBKHuwGmIKi6JjNwE9pAPE8b23SN6KemYzLrNb600prbjUyDe"
                                 token={handleToken}
                                 billingAddress
