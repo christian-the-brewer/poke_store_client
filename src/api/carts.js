@@ -11,10 +11,11 @@ export const getAllCarts = () => {
 
 // READ => SHOW
 export const getOneCart = (user) => {
-    return axios({url: apiUrl + '/carts',
-    headers: {
-        Authorization: `Token token=${user.token}`,
-    },
+    return axios({
+        url: apiUrl + '/carts',
+        headers: {
+            Authorization: `Token token=${user.token}`,
+        },
     })
 }
 
@@ -63,9 +64,9 @@ export const addToCart = (user, addedItem) => {
     return axios({
         url: `${apiUrl}/carts/add/`,
         method: 'POST',
-        headers: {
-            Authorization: `Token token=${user.token}`,
-        },
+        // headers: {
+        //     Authorization: `Token token=${user.token}`,
+        // },
         data: { product: addedItem }
     })
 }

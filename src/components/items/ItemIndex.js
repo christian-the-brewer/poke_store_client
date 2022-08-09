@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { Container, Card, Button } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
-
+import { addToCart } from '../../api/carts'
 import LoadingScreen from '../shared/LoadingScreen'
 import { getAllItems } from '../../api/items'
 import messages from '../shared/AutoDismissAlert/messages'
@@ -17,7 +17,7 @@ const ItemIndex = (props) => {
     const [items, setItems] = useState(null)
     const [error, setError] = useState(false)
 
-    const { msgAlert } = props
+    const { msgAlert, user } = props
 
     //console.log('Props in ItemIndex', props)
 
@@ -37,9 +37,28 @@ const ItemIndex = (props) => {
             })
     }, [])
 
-    const addToCart = () => {
+    const addToTheCart = (item) => {
+        console.log('this is item in add to cart', item)
+        addToCart(user, item)
+            .then(() => {
+                msgAlert({
+                    heading: 'Success',
+                    message: messages.removeItemSuccess,
+                    variant: 'success'
+                })
+            })
 
+
+            .catch(err => {
+                msgAlert({
+                    heading: 'Error adding to cart',
+                    message: messages.removeItemFailure,
+                    variant: 'danger'
+                })
+            })
     }
+
+
 
     if (error) {
         return <p>Error!</p>
@@ -54,11 +73,11 @@ const ItemIndex = (props) => {
 
     const itemCards = items.map((item, index) => (
         <Card style={{ width: '30%', margin: 5 }} key={index}>
-            <Link to={`/items/${item._id}`} style={{ textDecoration: 'none', color: 'black'}}><Card.Header style={{backgroundColor: pokeColor(item), textAlign: 'center', fontSize: '40px', fontWeight: 'bold'}} >{item.name}</Card.Header></Link>
+            <Link to={`/items/${item._id}`} style={{ textDecoration: 'none', color: 'black' }}><Card.Header style={{ backgroundColor: pokeColor(item), textAlign: 'center', fontSize: '40px', fontWeight: 'bold' }} >{item.name}</Card.Header></Link>
             <Card.Body>
                 <Link to={`/items/${item._id}`}><img src={item.image} alt={item.name}></img></Link>
             </Card.Body>
-            <Card.Footer style={{backgroundColor: pokeColor(item), color: wordColor(item), fontSize: '25px', fontWeight: 'bold' }}>
+            <Card.Footer style={{ backgroundColor: pokeColor(item), color: wordColor(item), fontSize: '25px', fontWeight: 'bold' }}>
                 <div>
                     <p>
                         Price: ${item.cost}
@@ -68,10 +87,8 @@ const ItemIndex = (props) => {
                     </p>
                 </div>
                 <div>
-                    <Button onClick={() => addToCart()}
-                        className="m-2"
-                        variant="success"
-                    >
+                    <Button onClick={() => addToTheCart(item)}
+                        className="m-2">
                         Add to Cart
                     </Button>
                 </div>
@@ -90,7 +107,7 @@ const pokeColor = function (item) {
     if (item.pokemonType.toLowerCase() === 'fire') {
         return 'crimson'
     } else if (item.pokemonType.toLowerCase() === 'grass') {
-       return 'lawnGreen'
+        return 'lawnGreen'
     } else if (item.pokemonType.toLowerCase() === 'water') {
         return 'royalBlue'
     } else if (item.pokemonType.toLowerCase() === 'bug') {
@@ -122,7 +139,7 @@ const wordColor = function (item) {
     if (item.pokemonType.toLowerCase() === 'fire') {
         return 'black'
     } else if (item.pokemonType.toLowerCase() === 'grass') {
-       return 'black'
+        return 'black'
     } else if (item.pokemonType.toLowerCase() === 'water') {
         return 'black'
     } else if (item.pokemonType.toLowerCase() === 'bug') {

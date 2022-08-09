@@ -84,9 +84,9 @@ const App = () => {
 				<Route
 					path="/addItem"
 					element={
-						<RequireAuth user={user}>
-							<CreateItem msgAlert={msgAlert} user={user} />
-						</RequireAuth>
+						// <RequireAuth user={user}>
+						<CreateItem msgAlert={msgAlert} user={user} />
+						// </RequireAuth>
 					}
 				/>
 
@@ -94,7 +94,7 @@ const App = () => {
 					path="/carts"
 					element={
 						// <RequireAuth user={user}>
-							<ShowCart msgAlert={msgAlert} user={user} />
+						<ShowCart msgAlert={msgAlert} user={user} />
 						// </RequireAuth>
 					}
 				/>
