@@ -16,7 +16,8 @@ import ShowItem from './components/items/ShowItem'
 import CreateItem from './components/items/CreateItem'
 import ItemIndex from './components/items/ItemIndex'
 import ShowCart from './components/cart/ShowCart'
-
+import ShowOrder from './components/orders/ShowOrder'
+import OrderIndex from './components/orders/OrderIndex'
 const App = () => {
 
 	const [user, setUser] = useState(null)
@@ -99,7 +100,7 @@ const App = () => {
 				/>
 
 				<Route
-					path="/orders"
+					path="/order"
 					element={
 						<RequireAuth user={user}>
 							<OrderIndex msgAlert={msgAlert} user={user} />
