@@ -70,3 +70,12 @@ export const addToCart = (user, addedItem) => {
         data: { product: addedItem }
     })
 }
+
+//checkout success
+export const checkoutSuccess = (user, cartId) => {
+    return axios({
+        url: `${apiUrl}/carts/checkout/`,
+        method: 'POST',
+        data: { cartId: cartId }
+    })
+}
