@@ -16,7 +16,7 @@ import ShowItem from './components/items/ShowItem'
 import CreateItem from './components/items/CreateItem'
 import ItemIndex from './components/items/ItemIndex'
 import ShowCart from './components/cart/ShowCart'
-
+import OrderIndex from './components/cart/OrderIndex'
 
 const App = () => {
 
@@ -100,22 +100,14 @@ const App = () => {
 				/>
 
 
-				{/* <Route
+				  <Route
 					path="/orders"
 					element={
 						<RequireAuth user={user}>
 							<OrderIndex msgAlert={msgAlert} user={user} />
 						</RequireAuth>
 					}
-				/>
-				<Route
-					path="/orders/:id"
-					element={
-						<RequireAuth user={user}>
-							<ShowOrder msgAlert={msgAlert} user={user} />
-						</RequireAuth>
-					}
-				/> */}
+				/> 
 
 
 			</Routes>

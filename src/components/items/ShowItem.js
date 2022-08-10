@@ -142,6 +142,9 @@ const ShowItem = (props) => {
     //     if (item.stock = 0) {
     //         return (<p>Out of Stock Sorry</p>)
     //     } else {
+    //         return (
+    //             <p>hi</p>
+    //         )
     //     }
     // }
 
@@ -176,13 +179,13 @@ const ShowItem = (props) => {
                                 >
                                     Delete This Item
                                 </Button>
-
-
-                                {(item.stock > 0) ?
-                                    (<Button onClick={() => addToTheCart()}
-                                        className="m-2">
-                                        Add To Cart
-                                    </Button>) : (<p>Out of stock</p>)}
+                              
+                              
+                                {(item.stock > 0 ) ?
+                                (<Button onClick={() => addToTheCart()}
+                                className="m-2">
+                                    Add To Cart
+                                </Button>) : (<p>Out of stock</p>) }
 
                                 {/* <Button onClick={() => addToTheCart()} */}
                                 {/* // className="m-2">

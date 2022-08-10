@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 
 import { Container, Card, Button } from 'react-bootstrap'
-
+import StripeCheckout from 'react-stripe-checkout'
 import LoadingScreen from '../shared/LoadingScreen'
 import { getOneCart, updateCart, checkoutSuccess } from '../../api/carts'
 import messages from '../shared/AutoDismissAlert/messages'
@@ -60,6 +60,19 @@ const ShowCart = (props) => {
         return sum
     }
 
+
+    function handleToken(token, addresses) {
+        if (token) {
+            msgAlert({
+                heading: 'Success',
+                message: messages.paymentSuccessful,
+                variant: 'success'
+            })
+            setTimeout(() => {
+                navigate('/')
+            }, 3000)
+        }
+    }
 
 
     if (!cart) {
