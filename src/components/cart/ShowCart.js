@@ -40,7 +40,7 @@ const ShowCart = (props) => {
 
     function handleToken(token, addresses) {
         if (token) {
-            checkoutSuccess(cart._id)
+            checkoutSuccess(user, cart._id)
             msgAlert({
                 heading: 'Success',
                 message: messages.paymentSuccessful,

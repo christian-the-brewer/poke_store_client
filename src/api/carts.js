@@ -62,11 +62,11 @@ export const removeCart = (user, cartId) => {
 export const addToCart = (user, addedItem) => {
 
     return axios({
-        url: `${apiUrl}/carts/add/`,
+        url: `${apiUrl}/carts/add`,
         method: 'POST',
-        // headers: {
-        //     Authorization: `Token token=${user.token}`,
-        // },
+        headers: {
+            Authorization: `Token token=${user.token}`,
+        },
         data: { product: addedItem }
     })
 }
@@ -74,8 +74,14 @@ export const addToCart = (user, addedItem) => {
 //checkout success
 export const checkoutSuccess = (user, cartId) => {
     return axios({
-        url: `${apiUrl}/carts/checkout/`,
+        url: `${apiUrl}/carts/checkout/${cartId}`,
         method: 'POST',
-        data: { cartId: cartId }
+        headers: {
+            Authorization: `Token token=${user.token}`,
+        },
+        data: {
+            cartId: cartId,
+            user: user
+        }
     })
 }
