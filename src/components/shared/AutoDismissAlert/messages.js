@@ -7,7 +7,8 @@ const messages = {
 	changePasswordSuccess: 'Password changed successfully!',
 	changePasswordFailure:'Failed to change passwords. Check your old password and try again.',
 	paymentSuccessful:'successfully puchased items',
-	updateItemFailure:'failed to change stock'
+	updateItemFailure:'failed to change stock',
+	getOrderfailure: 'failed to get carts'
 }
 
 module.exports = messages
