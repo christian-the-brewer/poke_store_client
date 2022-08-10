@@ -5,9 +5,10 @@ import { useParams, useNavigate } from 'react-router-dom'
 import { Container, Card, Button } from 'react-bootstrap'
 
 import LoadingScreen from '../shared/LoadingScreen'
-import { getOneCart, updateCart } from '../../api/carts'
+import { getOneCart, updateCart, checkoutSuccess } from '../../api/carts'
 import messages from '../shared/AutoDismissAlert/messages'
 import EditCartModal from './EditCartModal'
+import StripeCheckout from 'react-stripe-checkout'
 
 
 const ShowCart = (props) => {
@@ -37,11 +38,35 @@ const ShowCart = (props) => {
             })
     }, [])
 
+    function handleToken(token, addresses) {
+        if (token) {
+            checkoutSuccess(cart._id)
+            msgAlert({
+                heading: 'Success',
+                message: messages.paymentSuccessful,
+                variant: 'success'
+            })
+            setTimeout(() => {
+                navigate('/')
+            }, 3000)
+        }
+    }
+
+    const updateCartTotal = (cart) => {
+        let sum = 0
+        cart.products.forEach(product => {
+            sum += product.cost
+        })
+        return sum
+    }
+
 
 
     if (!cart) {
         return <LoadingScreen />
     }
+
+
 
 
     const cartProducts = cart.products.map((product, index) => (
@@ -73,6 +98,15 @@ const ShowCart = (props) => {
                                 >
                                     Edit Cart
                                 </Button>
+                                <StripeCheckout
+                                    stripeKey={process.env.STRIPE_API_TOKEN}
+                                    token={handleToken}
+                                    billingAddress
+                                    shippingAddress
+                                    amount={updateCartTotal(cart) * 100}
+                                    label="Purchase Items"
+                                    currency="USD"
+                                />
 
                             </>
 

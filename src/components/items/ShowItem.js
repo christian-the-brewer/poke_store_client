@@ -203,9 +203,9 @@ const ShowItem = (props) => {
 
 
                         }
-                    </Card.Footer>
-                </Card>
-            </Container>
+                    </Card.Footer >
+                </Card >
+            </Container >
             <EditItemModal
                 user={user}
                 item={item}
