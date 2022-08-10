@@ -9,6 +9,8 @@ E-Commerce Store
 
 ## About
 
+The client is where the user interacts with the store. Here is where a user can buy approximately 55 items via one bulk purchase in a cart or single items they wish to purchase.  
+
 ## Roles
 
     -Project Manager: Christian Brewer
