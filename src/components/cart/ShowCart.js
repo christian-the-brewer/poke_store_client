@@ -8,7 +8,8 @@ import LoadingScreen from '../shared/LoadingScreen'
 import { getOneCart, updateCart, checkoutSuccess } from '../../api/carts'
 import messages from '../shared/AutoDismissAlert/messages'
 import EditCartModal from './EditCartModal'
-import StripeCheckout from 'react-stripe-checkout'
+import { removeFromCart } from '../../api/carts'
+
 
 
 const ShowCart = (props) => {
@@ -20,7 +21,7 @@ const ShowCart = (props) => {
     const { id } = useParams()
     const navigate = useNavigate()
 
-    const { user, msgAlert } = props
+    const { user, msgAlert, triggerRefresh } = props
     console.log('user in props', user)
     console.log('the cart in showCart', cart)
 
@@ -74,6 +75,12 @@ const ShowCart = (props) => {
         }
     }
 
+    const removeFromTheCart = (user, cartId, productId) => {
+        removeFromCart(user, cartId, productId)
+
+    }
+
+
 
     if (!cart) {
         return <LoadingScreen />
@@ -83,7 +90,19 @@ const ShowCart = (props) => {
 
 
     const cartProducts = cart.products.map((product, index) => (
-        <li key={index}>{product.name}: ${product.cost}</li>
+        <li key={index}>
+            <div>
+                {product.name}: ${product.cost}
+                <Button onClick={() => removeFromTheCart(user, cart._id, product)}
+                    className="m-2"
+                    variant="danger"
+                >
+                    Delete This Item
+                </Button>
+            </div>
+        </li>
+
+
 
     ))
     console.log(cart.products)

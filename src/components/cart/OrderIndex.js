@@ -17,13 +17,13 @@ const OrderIndex = (props) => {
     const [carts, setCarts] = useState(null)
     const [error, setError] = useState(false)
 
-    const { msgAlert } = props
+    const { user, msgAlert } = props
 
     //console.log('Props in ItemIndex', props)
 
     useEffect(() => {
 
-        getAllOrders()
+        getAllOrders(user)
             .then(res => setCarts(res.data.carts))
             .catch(err => {
                 msgAlert({
@@ -36,7 +36,7 @@ const OrderIndex = (props) => {
             })
     }, [])
 
-   
+
     if (error) {
         return <p>Error!</p>
     }
@@ -50,14 +50,14 @@ const OrderIndex = (props) => {
 
     const orderCards = carts.map((cart, index) => (
         <Card style={{ width: '30%', margin: 5 }} key={index}>
-           <Card.Header>
-                 Order: {index + 1}
-           </Card.Header>
+            <Card.Header>
+                Order: {index + 1}
+            </Card.Header>
             <Card.Body>
                 <ul>
-                    { cart.products.map((product, index) => (
-                         <li key={index}>{product.name}: ${product.cost}</li>
-                     ))}
+                    {cart.products.map((product, index) => (
+                        <li key={index}>{product.name}: ${product.cost}</li>
+                    ))}
 
                 </ul>
             </Card.Body>
@@ -71,7 +71,13 @@ const OrderIndex = (props) => {
         </Card >
     ))
 
-    
+    return (
+        <div style={cardContainerStyle}>
+            {orderCards}
+        </div>
+    )
+
+
 }
 
 export default OrderIndex

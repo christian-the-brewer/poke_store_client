@@ -85,3 +85,19 @@ export const checkoutSuccess = (user, cartId) => {
         }
     })
 }
+
+//checkout success
+export const removeFromCart = (user, cartId, itemId) => {
+    return axios({
+        url: `${apiUrl}/carts/edit/${cartId}`,
+        method: 'PATCH',
+        headers: {
+            Authorization: `Token token=${user.token}`,
+        },
+        data: {
+            cartId: cartId,
+            user: user,
+            itemId: itemId
+        }
+    })
+}
