@@ -85,6 +85,12 @@ const ShowCart = (props) => {
                             <ul>
                                 {cartProducts}
                             </ul>
+                            <Button onClick={() => removeFromTheCart(user, cart._id, product)}
+                                className="m-2"
+                                variant="danger"
+                            >
+                                Delete This Item
+                            </Button>
 
                         </Card.Text>
                     </Card.Body>
@@ -92,12 +98,7 @@ const ShowCart = (props) => {
                         {
 
                             <>
-                                <Button onClick={() => setEditModalShow(true)}
-                                    className="m-2"
-                                    variant="warning"
-                                >
-                                    Edit Cart
-                                </Button>
+
                                 <StripeCheckout
                                     stripeKey={process.env.STRIPE_API_TOKEN}
                                     token={handleToken}
