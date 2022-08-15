@@ -1,0 +1,28 @@
+.home {
+    background-image: url(https://assets-prd.ignimgs.com/2022/02/19/pokemon-tcg-live-preview-1645242791988.jpg?width=2048);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: contain;
+    background-size: cover;
+    padding-top: 6rem;
+}
+
+.show {
+    background-image: url(https://assets-prd.ignimgs.com/2022/02/19/pokemon-tcg-live-preview-1645242791988.jpg?width=2048);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: contain;
+    background-size: cover;
+}
+
+
+.row {
+    background-image: url(https://assets-prd.ignimgs.com/2022/02/19/pokemon-tcg-live-preview-1645242791988.jpg?width=2048);
+    height: 100vh;
+}
+
+.header {
+ position: fixed;
+ z-index: 1;
+ width: 100%;
+}

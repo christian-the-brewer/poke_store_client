@@ -150,7 +150,7 @@ const ShowItem = (props) => {
 
 
     return (
-        <>
+        <div className="show">
             <Container className="fluid">
                 <Card >
                     <Card.Header style={{ backgroundColor: pokeColor(item), fontSize: '50px', fontWeight: 'bold', textAlign: 'center' }}>{item.name}</Card.Header>
@@ -218,7 +218,7 @@ const ShowItem = (props) => {
                 triggerRefresh={() => setUpdated(prev => !prev)}
                 handleClose={() => setEditModalShow(false)}
             />
-        </>
+        </div>
     )
 }
 

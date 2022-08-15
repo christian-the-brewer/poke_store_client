@@ -2,6 +2,7 @@ import React, { Fragment } from 'react'
 import Nav from 'react-bootstrap/Nav'
 import Navbar from 'react-bootstrap/Navbar'
 import { Link } from 'react-router-dom'
+import '../../css/index.css'
 const linkStyle = {
 	color: 'black',
 	fontSize: '30px'
@@ -59,11 +60,12 @@ const unauthenticatedOptions = (
 // 	</>
 // )
 
-const Header = ({ user }) => (
-	<Navbar bg='primary' variant='dark' expand='md'>
+const Header = ({ user }) => ( 
+	<div className="header">
+	<Navbar bg='danger' variant='dark' expand='md'>
 		<Navbar.Brand className='m-2'>
 			<Link to='/' style={linkStyle}>
-				Poke
+				Pokemart
 			</Link>
 		</Navbar.Brand>
 		<Navbar.Toggle aria-controls='basic-navbar-nav' />
@@ -77,6 +79,7 @@ const Header = ({ user }) => (
 			</Nav>
 		</Navbar.Collapse>
 	</Navbar>
+	</div>
 )
 
 export default Header
