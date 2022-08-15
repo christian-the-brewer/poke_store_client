@@ -60,6 +60,12 @@ const ShowCart = (props) => {
         return sum
     }
 
+    const removeFromTheCart = (user, cartId, productId) => {
+        removeFromCart(user, cartId, productId)
+
+    }
+
+
 
 
     if (!cart) {
