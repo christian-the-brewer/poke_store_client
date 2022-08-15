@@ -16,6 +16,7 @@ import ShowItem from './components/items/ShowItem'
 import CreateItem from './components/items/CreateItem'
 import ItemIndex from './components/items/ItemIndex'
 import ShowCart from './components/cart/ShowCart'
+import OrderIndex from './components/cart/OrderIndex'
 
 
 const App = () => {
