@@ -24,8 +24,8 @@ const authenticatedOptions = (
 			</Link>
 		</Nav.Item>
 		<Nav.Item className='m-2'>
-			<Link to='/order' style={linkStyle}>
-				My Order
+			<Link to='/orders' style={linkStyle}>
+				My Orders
 			</Link>
 		</Nav.Item>
 		<Nav.Item className='m-2'>
@@ -63,7 +63,7 @@ const Header = ({ user }) => (
 	<Navbar bg='primary' variant='dark' expand='md'>
 		<Navbar.Brand className='m-2'>
 			<Link to='/' style={linkStyle}>
-				Poke
+				Poke Mart
 			</Link>
 		</Navbar.Brand>
 		<Navbar.Toggle aria-controls='basic-navbar-nav' />

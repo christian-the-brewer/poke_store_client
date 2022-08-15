@@ -101,7 +101,7 @@ const App = () => {
 				/>
 
 
-				{/* <Route
+				<Route
 					path="/orders"
 					element={
 						<RequireAuth user={user}>
@@ -109,7 +109,8 @@ const App = () => {
 						</RequireAuth>
 					}
 				/>
-				<Route
+
+				{/* <Route
 					path="/orders/:id"
 					element={
 						<RequireAuth user={user}>
