@@ -2,12 +2,17 @@ import apiUrl from '../apiConfig'
 import axios from 'axios'
 
 //READ => INDEX
-export const getAllOrders = () => {
+export const getAllOrders = (user) => {
     return axios({
         url: `${apiUrl}/orders`,
-        method: 'GET'
+        headers: {
+            Authorization: `Token token=${user.token}`,
+        },
+        method: 'GET',
+        data: { user: user }
     })
 }
+
 
 // READ => SHOW
 export const getOneOrder = (id) => {
