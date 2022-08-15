@@ -179,7 +179,7 @@ const ShowItem = (props) => {
 
 
                                 {(item.stock > 0) ?
-                                    (<Button onClick={() => addToTheCart()}
+                                    (<Button onClick={() => { addToTheCart(); navigate('/') }}
                                         className="m-2">
                                         Add To Cart
                                     </Button>) : (<p>Out of stock</p>)}

@@ -86,12 +86,12 @@ const ItemIndex = (props) => {
                         Qty: {item.stock}
                     </p>
                 </div>
-                <div>
+                {/* <div>
                     <Button onClick={() => addToTheCart(item)}
                         className="m-2">
                         Add to Cart
                     </Button>
-                </div>
+                </div> */}
             </Card.Footer>
         </Card >
     ))

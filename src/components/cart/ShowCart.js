@@ -5,7 +5,7 @@ import { useParams, useNavigate } from 'react-router-dom'
 import { Container, Card, Button } from 'react-bootstrap'
 
 import LoadingScreen from '../shared/LoadingScreen'
-import { getOneCart, updateCart, checkoutSuccess } from '../../api/carts'
+import { getOneCart, updateCart, checkoutSuccess, removeFromCart } from '../../api/carts'
 import messages from '../shared/AutoDismissAlert/messages'
 import EditCartModal from './EditCartModal'
 import StripeCheckout from 'react-stripe-checkout'
@@ -28,6 +28,7 @@ const ShowCart = (props) => {
     useEffect(() => {
         getOneCart(user)
             .then(res => setCart(res.data.cart))
+            // .then(updateCartTotal(cart))
             .catch(err => {
                 msgAlert({
                     heading: 'Error getting cart',
@@ -37,6 +38,8 @@ const ShowCart = (props) => {
                 navigate('/')
             })
     }, [])
+
+
 
     function handleToken(token, addresses) {
         if (token) {
@@ -52,21 +55,21 @@ const ShowCart = (props) => {
         }
     }
 
-    const updateCartTotal = (cart) => {
+    const updateCartTotal = async (cart) => {
         let sum = 0
-        cart.products.forEach(product => {
+        await cart.products.forEach(product => {
             sum += product.cost
         })
+        setTotal(sum)
         return sum
     }
+
 
     const removeFromTheCart = (user, cartId, productId) => {
         removeFromCart(user, cartId, productId)
 
+
     }
-
-
-
 
     if (!cart) {
         return <LoadingScreen />
@@ -76,7 +79,15 @@ const ShowCart = (props) => {
 
 
     const cartProducts = cart.products.map((product, index) => (
-        <li key={index}>{product.name}: ${product.cost}</li>
+        <>
+            <li key={index}>{product.name}: ${product.cost}</li>
+            <Button onClick={() => { removeFromTheCart(user, cart._id, product); navigate('/') }}
+                className="m-2"
+                variant="danger"
+            >
+                Delete This Item
+            </Button>
+        </>
 
     ))
     console.log(cart.products)
@@ -91,12 +102,7 @@ const ShowCart = (props) => {
                             <ul>
                                 {cartProducts}
                             </ul>
-                            <Button onClick={() => removeFromTheCart(user, cart._id, product)}
-                                className="m-2"
-                                variant="danger"
-                            >
-                                Delete This Item
-                            </Button>
+                            <p>Total: ${total}</p>
 
                         </Card.Text>
                     </Card.Body>
