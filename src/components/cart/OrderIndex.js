@@ -48,6 +48,17 @@ const OrderIndex = (props) => {
         return <p>Sorry, looks like you haven't purchased anything yet.</p>
     }
 
+
+
+
+    const orderTotal = (cart) => {
+        let sum = 0
+        cart.products.forEach(product => {
+            sum += product.cost
+        })
+        return sum
+    }
+
     const orderCards = carts.map((cart, index) => (
         <Card style={{ width: '30%', margin: 5 }} key={index}>
             <Card.Header>
@@ -64,7 +75,7 @@ const OrderIndex = (props) => {
             <Card.Footer>
                 <div>
                     <p>
-                        Total Cost:
+                        Total: ${orderTotal(cart)}
                     </p>
                 </div>
             </Card.Footer>
@@ -72,7 +83,7 @@ const OrderIndex = (props) => {
     ))
 
     return (
-        <div style={cardContainerStyle}>
+        <div className='cart' style={cardContainerStyle}>
             {orderCards}
         </div>
     )

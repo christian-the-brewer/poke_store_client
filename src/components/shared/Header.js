@@ -2,6 +2,7 @@ import React, { Fragment } from 'react'
 import Nav from 'react-bootstrap/Nav'
 import Navbar from 'react-bootstrap/Navbar'
 import { Link } from 'react-router-dom'
+import '../../public/index.css'
 const linkStyle = {
 	color: 'black',
 	fontSize: '30px'
@@ -60,23 +61,25 @@ const unauthenticatedOptions = (
 // )
 
 const Header = ({ user }) => (
-	<Navbar bg='danger' variant='dark' expand='md'>
-		<Navbar.Brand className='m-2'>
-			<Link to='/' style={linkStyle}>
-				Poke Mart
-			</Link>
-		</Navbar.Brand>
-		<Navbar.Toggle aria-controls='basic-navbar-nav' />
-		<Navbar.Collapse id='basic-navbar-nav'>
-			<Nav className='ml-auto'>
-				{user && (
-					<span className='navbar-text mr-2'>Welcome, {user.name}</span>
-				)}
-				{/* {alwaysOptions} */}
-				{user ? authenticatedOptions : unauthenticatedOptions}
-			</Nav>
-		</Navbar.Collapse>
-	</Navbar>
+	<div className='header'>
+		<Navbar bg='danger' variant='dark' expand='md'>
+			<Navbar.Brand className='m-2'>
+				<Link to='/' style={linkStyle}>
+					Poke Mart
+				</Link>
+			</Navbar.Brand>
+			<Navbar.Toggle aria-controls='basic-navbar-nav' />
+			<Navbar.Collapse id='basic-navbar-nav'>
+				<Nav className='ml-auto'>
+					{user && (
+						<span className='navbar-text mr-2'>Welcome, {user.name}</span>
+					)}
+					{/* {alwaysOptions} */}
+					{user ? authenticatedOptions : unauthenticatedOptions}
+				</Nav>
+			</Navbar.Collapse>
+		</Navbar>
+	</div>
 )
 
 export default Header

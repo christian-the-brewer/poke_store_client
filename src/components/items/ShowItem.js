@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import '../../public/index.css'
 
 import { useParams, useNavigate } from 'react-router-dom'
 // useParams will allow us to see our parameters
@@ -12,7 +13,7 @@ import messages from '../shared/AutoDismissAlert/messages'
 import EditItemModal from './EditItemModal'
 import ItemForm from '../shared/ItemForm'
 import StripeCheckout from 'react-stripe-checkout'
-import { addToCart } from '../../api/carts'
+import { addToCart, updateCart, checkoutSuccess } from '../../api/carts'
 
 // We need to get the item's id from the parameters
 // Then we need to make a request to the api
@@ -147,7 +148,7 @@ const ShowItem = (props) => {
 
 
     return (
-        <>
+        <div className='show'>
             <Container className="fluid">
                 <Card >
                     <Card.Header style={{ backgroundColor: pokeColor(item), fontSize: '50px', fontWeight: 'bold', textAlign: 'center' }}>{item.name}</Card.Header>
@@ -184,21 +185,21 @@ const ShowItem = (props) => {
                                         Add To Cart
                                     </Button>) : (<p>Out of stock</p>)}
 
-                                {/* <Button onClick={() => addToTheCart()} */}
-                                {/* // className="m-2">
-                                //     Add To Cart
-                                // </Button> */}
-                                {(item.stock > 0) ?
-                                    (<StripeCheckout
-                                        stripeKey="pk_test_51LTtnNDtEn7Sojm7iPaYEA0jfQj07zxKZ92tb1ZrdFNZuI7ecXBKHuwGmIKi6JjNwE9pAPE8b23SN6KemYzLrNb600prbjUyDe"
-                                        token={handleToken}
-                                        billingAddress
-                                        shippingAddress
-                                        amount={item.cost * 100}
-                                        label="Purchase Item"
+                                {/* <Button onClick={() => addToTheCart()}
+                                    className="m-2">
+                                    Add To Cart
+                                </Button> */}
+                                {/* {(item.stock > 0) ? */}
+                                {/* // (<StripeCheckout */}
+                                {/* //     stripeKey="pk_test_51LTtnNDtEn7Sojm7iPaYEA0jfQj07zxKZ92tb1ZrdFNZuI7ecXBKHuwGmIKi6JjNwE9pAPE8b23SN6KemYzLrNb600prbjUyDe" */}
+                                {/* //     token={handleToken}
+                                    //     billingAddress
+                                    //     shippingAddress
+                                    //     amount={item.cost * 100}
+                                    //     label="Purchase Item"
                                         image={item.image}
-                                        currency="USD"
-                                    />) : (<p></p>)}
+                                    //     currency="USD"
+                                    // />) : (<p></p>)} */}
                             </>
 
 
@@ -215,7 +216,7 @@ const ShowItem = (props) => {
                 triggerRefresh={() => setUpdated(prev => !prev)}
                 handleClose={() => setEditModalShow(false)}
             />
-        </>
+        </div>
     )
 }
 

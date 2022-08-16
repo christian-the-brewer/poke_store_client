@@ -92,7 +92,7 @@ const ShowCart = (props) => {
     ))
     console.log(cart.products)
     return (
-        <>
+        <div className='cart'>
             <Container className="fluid">
                 <Card>
                     <Card.Header>Order</Card.Header>
@@ -137,7 +137,7 @@ const ShowCart = (props) => {
                 triggerRefresh={() => setUpdated(prev => !prev)}
                 handleClose={() => setEditModalShow(false)}
             />
-        </>
+        </div>
     )
 }
 

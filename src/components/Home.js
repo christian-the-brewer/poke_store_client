@@ -12,12 +12,12 @@ const Home = (props) => {
 	//console.log('props in home', props)
 
 	return (
-		<>
-			<h2 style={{textAlign: 'center', fontSize: '50px', fontWeight: 'bold'}} >All Products</h2>
-			<ItemIndex 
+		<div className="home">
+			<h2 style={{ textAlign: 'center', fontSize: '50px', fontWeight: 'bold' }} >All Products</h2>
+			<ItemIndex
 				msgAlert={msgAlert}
 			/>
-		</>
+		</div>
 	)
 }
 
