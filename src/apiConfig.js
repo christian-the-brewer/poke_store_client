@@ -1,7 +1,7 @@
 let apiUrl
 const apiUrls = {
-    // YOU MUST CHANGE PRODUCTION URL WHEN DEPLOYING
-	production: '<replace_with_deployed_api_url>',
+	// YOU MUST CHANGE PRODUCTION URL WHEN DEPLOYING
+	production: 'https://the-poke-mart-project.herokuapp.com/',
 	development: 'http://localhost:8000',
 }
 
